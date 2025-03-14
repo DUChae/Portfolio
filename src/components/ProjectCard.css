@@ -1,0 +1,121 @@
+/* 1) 카드 컨테이너 (수평 레이아웃) */
+.image-driven-card {
+  display: flex; /* 수평 배치 */
+  align-items: center; /* 수직 중앙 정렬 */
+  max-width: 1700px; /* 카드 최대 폭 (원하는 값) */
+  margin: 2rem auto; /* 중앙 정렬 + 상하 여백 */
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+  /* 부드러운 등장 애니메이션 */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: cardFadeIn 1.5s forwards ease;
+  animation-delay: calc(0.15s * var(--card-index));
+}
+
+/* 2) 이미지 영역 (왼쪽) */
+.image-container {
+  flex: 0 0 auto; /* 이미지 영역을 고정 크기로 사용 */
+  max-width: 50%; /* 이미지가 카드 폭의 40% 차지 (조정 가능) */
+  overflow: hidden;
+  border-right: 1px solid #333; /* 선택: 구분선 */
+}
+
+/* 실제 이미지 스타일 */
+.original-size-image {
+  display: block;
+  width: 100%; /* 부모(.image-container)의 폭 100% */
+  height: auto; /* 원본 비율 유지 */
+  object-fit: cover; /* 넘칠 경우 잘림 (contain으로 변경 가능) */
+}
+
+/* 3) 텍스트 영역 (오른쪽) */
+.info-container {
+  flex: 1; /* 나머지 공간 사용 */
+  padding: 2rem;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+/* 제목 */
+.project-title {
+  font-size: 3rem;
+  color: #61dafb;
+  margin-bottom: 1rem;
+}
+
+/* 설명 */
+.project-description {
+  white-space: pre-wrap;
+  font-size: 1.6rem; /* 텍스트 크게 */
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+/* 기술 스택 */
+.project-tech-stack {
+  font-size: 1.3rem; /* 텍스트 크게 */
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.project-tech-stack strong {
+  color: #61dafb;
+}
+
+/* 링크 */
+.project-links a {
+  color: #61dafb;
+  text-decoration: none;
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+.project-links a:hover {
+  text-decoration: underline;
+}
+
+/* 카드 등장 애니메이션 */
+@keyframes cardFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 4) 반응형 (모바일) */
+@media (max-width: 768px) {
+  .image-driven-card {
+    flex-direction: column; /* 세로 배치 */
+    max-width: 95%;
+  }
+
+  .image-container {
+    max-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #333; /* 선택 */
+  }
+
+  .original-size-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .info-container {
+    padding: 1rem;
+  }
+
+  .project-title {
+    font-size: 1.5rem;
+  }
+  .project-description {
+    font-size: 1.2rem;
+  }
+  .project-tech-stack {
+    font-size: 1.1rem;
+  }
+}

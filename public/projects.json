@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "프로젝트 A",
+    "description": "프로젝트 A의 간단한 설명입니다.",
+    "technologies": ["React", "JavaScript", "CSS"],
+    "github": "https://github.com/username/projectA",
+    "demo": "https://projectA-demo.com"
+  },
+  {
+    "id": 2,
+    "title": "프로젝트 B",
+    "description": "프로젝트 B에 대한 설명입니다.",
+    "technologies": ["React", "Node.js", "Express"],
+    "github": "https://github.com/username/projectB",
+    "demo": "https://projectB-demo.com"
+  }
+]

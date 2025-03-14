@@ -1,0 +1,152 @@
+.skills-container {
+  position: relative; /* 가상 요소 오버레이 배치 위해 */
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+  left: -40px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  font-family: "Arial", sans-serif;
+  color: #ffffff;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* 가상 요소로 반투명 레이어 생성 */
+.skills-container::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 130vh;
+
+  /* 반투명 검정 오버레이 */
+  background: rgba(0, 0, 0, 0.6);
+  pointer-events: none; /* 클릭 이벤트 통과 */
+  z-index: 0; /* 오버레이가 뒤쪽 레이어 */
+}
+
+/* ★ 모든 텍스트는 이 래퍼에 position: relative; z-index: 1; */
+.skills-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* 스크롤바 스타일 */
+.skills-container::-webkit-scrollbar-track {
+  background: #4805ff;
+  border-radius: 4px;
+}
+.skills-container::-webkit-scrollbar-thumb {
+  background: #4805ff;
+  border-radius: 4px;
+}
+.skills-container::-webkit-scrollbar-thumb:hover {
+  background: #4805ff;
+}
+
+/* 제목(섹션) 중앙 정렬 */
+.skills-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 5rem;
+  color: #61dafb;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* 섹션 래퍼 */
+.skills-section {
+  max-width: 60rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* 제목: 폭 100%를 사용해 border가 부모 폭 전체를 차지 */
+.section-title {
+  display: block;
+  width: 100%;
+  border-bottom: 3px solid #ffffff;
+  margin: 0;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* 스킬 목록: 가운데 배치 + 내부 텍스트는 왼쪽 정렬 */
+.skills-list {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* 스킬 아이템: 왼쪽 정렬 */
+.skill-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  white-space: normal;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  opacity: 0;
+  animation: fadeInItem 0.8s ease-in-out forwards;
+  font-weight: bolder;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 마우스가 올라갔을 때 효과 */
+.skill-item:hover {
+  transform: scale(1.2);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 6px;
+}
+
+/* 순차적 애니메이션 지연 */
+.skill-item:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.skill-item:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.skill-item:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.skill-item:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+/* 아이콘 스타일 */
+.skill-icon {
+  margin-right: 10px;
+  font-size: 5rem;
+  color: #61dafb;
+  transition: transform 0.3s ease;
+}
+.skill-icon:hover {
+  transform: scale(1.2);
+}
+
+/* 애니메이션 keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeInItem {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
