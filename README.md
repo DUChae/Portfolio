@@ -5,6 +5,8 @@
 **React**, **React Router**, **React Icons** 등을 활용해 구현하였으며,
 스플래시 화면, 사이버펑크 테마, 수평 레이아웃의 프로젝트 카드 등을 포함합니다.
 
+![홈](https://github.com/user-attachments/assets/79b8e07e-b584-4c02-adda-c467d5ac1d47)
+
 <br/>
 
 ## **목차**
