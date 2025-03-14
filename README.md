@@ -74,13 +74,9 @@
   - [React Icons](https://react-icons.github.io/react-icons/)
   - CSS Modules / SCSS / Tailwind (필요한 경우)
 
-- **Back-end** (Optional, 만약 존재한다면):
 
-  - Node.js (Express)
-  - REST API or GraphQL
 
-- **Build/Dev Tools**:
-  - [Vite](https://vitejs.dev/) or [Create React App](https://create-react-app.dev/)
+- **Build/Dev Tools**
   - Git / GitHub
   - VS Code
 
