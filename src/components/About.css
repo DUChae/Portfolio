@@ -53,15 +53,15 @@
 
 .about-text h1 {
   font-size: 5rem;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
   color: var(--light-color); /* 네온 옐로 */
-  text-shadow: 1 1 2px var(--light-color);
+  text-shadow: 0 0 2px var(--light-color);
 }
 
 .about-text h2 {
   font-size: 1.8rem;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
   color: var(--light-color);
   text-shadow: 2 2 2px var(--light-color);
 
@@ -72,9 +72,9 @@
 /* 본문 텍스트 */
 .about-text p {
   font-size: 1.5rem;
-  line-height: 1.6;
-  margin-bottom: 15px;
-  text-shadow: 1 1 3px var(--light-color);
+  line-height: 2;
+  margin-bottom: 20px;
+  text-shadow: 0 0 3px var(--light-color);
   color: white;
 }
 
@@ -95,7 +95,7 @@
 
 .about-section p {
   font-size: 1.5rem;
-  line-height: 1.6;
+  line-height: 2;
   text-shadow: 1 1 2px var(--light-color);
   color: white;
 }
