@@ -1,121 +1,119 @@
-/* 1) 카드 컨테이너 (수평 레이아웃) */
+/* src/components/ProjectCard.css */
 .image-driven-card {
-  display: flex; /* 수평 배치 */
-  align-items: center; /* 수직 중앙 정렬 */
-  max-width: 1700px; /* 카드 최대 폭 (원하는 값) */
-  margin: 2rem auto; /* 중앙 정렬 + 상하 여백 */
-  border-radius: 12px;
+  display: flex;
+  background-color: #2a2a4a; /* 카드 배경색 */
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  margin-bottom: 30px;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.6);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-
-  /* 부드러운 등장 애니메이션 */
-  opacity: 0;
-  transform: translateY(30px);
-  animation: cardFadeIn 1.5s forwards ease;
-  animation-delay: calc(0.15s * var(--card-index));
+  max-width: 900px; /* 최대 너비 설정 */
+  width: 100%;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  animation: fadeIn 0.8s forwards; /* 카드별 페이드인 애니메이션 */
+  animation-delay: calc(var(--card-index) * 0.2s); /* 인덱스에 따른 딜레이 */
 }
 
-/* 2) 이미지 영역 (왼쪽) */
-.image-container {
-  flex: 0 0 auto; /* 이미지 영역을 고정 크기로 사용 */
-  max-width: 50%; /* 이미지가 카드 폭의 40% 차지 (조정 가능) */
-  overflow: hidden;
-  border-right: 1px solid #333; /* 선택: 구분선 */
+.image-driven-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* 실제 이미지 스타일 */
-.original-size-image {
-  display: block;
-  width: 100%; /* 부모(.image-container)의 폭 100% */
-  height: auto; /* 원본 비율 유지 */
-  object-fit: cover; /* 넘칠 경우 잘림 (contain으로 변경 가능) */
-}
-
-/* 3) 텍스트 영역 (오른쪽) */
-.info-container {
-  flex: 1; /* 나머지 공간 사용 */
-  padding: 2rem;
-  color: #fff;
-  box-sizing: border-box;
-}
-
-/* 제목 */
-.project-title {
-  font-size: 3rem;
-  color: #61dafb;
-  margin-bottom: 1rem;
-}
-
-/* 설명 */
-.project-description {
-  white-space: pre-wrap;
-  font-size: 1.6rem; /* 텍스트 크게 */
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  color: white;
-}
-
-/* 기술 스택 */
-.project-tech-stack {
-  font-size: 1.3rem; /* 텍스트 크게 */
-  color: #ccc;
-  margin-bottom: 1rem;
-}
-
-.project-tech-stack strong {
-  color: #61dafb;
-}
-
-/* 링크 */
-.project-links a {
-  color: #61dafb;
-  text-decoration: none;
-  margin-right: 1rem;
-  font-weight: bold;
-}
-
-.project-links a:hover {
-  text-decoration: underline;
-}
-
-/* 카드 등장 애니메이션 */
-@keyframes cardFadeIn {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* 4) 반응형 (모바일) */
+/* 이미지 컨테이너 (왼쪽) */
+.image-container {
+  flex: 1; /* flex item이 차지할 공간 비율 */
+  min-width: 250px; /* 이미지 컨테이너의 최소 너비 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* 이미지가 컨테이너를 넘어가지 않도록 */
+  background-color: #1a1a2e; /* 이미지 배경색 */
+  padding: 10px;
+}
+
+.original-size-image {
+  max-width: 100%; /* 컨테이너 너비에 맞춰 크기 조절 */
+  height: auto;
+  display: block;
+  border-radius: 8px; /* 이미지 모서리 둥글게 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 정보 컨테이너 (오른쪽) */
+.info-container {
+  flex: 2; /* flex item이 차지할 공간 비율 */
+  padding: 25px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-title {
+  font-size: 1.8rem;
+  color: #61dafb;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #3f72af; /* 제목 아래 밑줄 */
+  padding-bottom: 10px;
+}
+
+.project-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+  margin-bottom: 15px;
+  white-space: pre-wrap; /* 줄바꿈 문자를 인식합니다. */
+}
+
+.project-tech-stack {
+  font-size: 0.95rem;
+  color: #bbbbbb;
+  margin-bottom: 15px;
+}
+
+.project-tech-stack strong {
+  color: #61dafb;
+}
+
+.project-links a {
+  color: #90ee90; /* 밝은 녹색 링크 */
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 15px;
+  transition: color 0.3s ease;
+}
+
+.project-links a:hover {
+  color: #76c776; /* 호버 시 색상 변경 */
+  text-decoration: underline;
+}
+
+/* 모바일 반응형 디자인 */
 @media (max-width: 768px) {
   .image-driven-card {
-    flex-direction: column; /* 세로 배치 */
-    max-width: 95%;
+    flex-direction: column; /* 세로로 쌓이도록 변경 */
   }
 
   .image-container {
-    max-width: 100%;
-    border-right: none;
-    border-bottom: 1px solid #333; /* 선택 */
-  }
-
-  .original-size-image {
+    min-width: unset; /* 모바일에서는 최소 너비 제한 해제 */
     width: 100%;
-    height: auto;
+    padding: 20px; /* 상하 패딩 추가 */
   }
 
   .info-container {
-    padding: 1rem;
+    padding: 20px;
   }
 
   .project-title {
     font-size: 1.5rem;
-  }
-  .project-description {
-    font-size: 1.2rem;
-  }
-  .project-tech-stack {
-    font-size: 1.1rem;
   }
 }

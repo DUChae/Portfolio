@@ -6,7 +6,7 @@ const Splash = () => {
   return (
     <div className="cyber-splash">
       <div className="cyber-overlay"></div>
-      <h1 className="cyber-title">WELCOME TO MY PORTFOLIO</h1>
+      <h1 className="cyber-title">WELCOME</h1>
       <p className="cyber-subtitle">Loading...</p>
     </div>
   );

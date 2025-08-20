@@ -17,7 +17,6 @@
   height: 20px;
 }
 
-/* 폰트 아이콘 사용 (선택적) */
 .arrow-icon::before {
   content: "\2190"; /* Unicode 화살표 문자 (←) */
   font-size: 40px;

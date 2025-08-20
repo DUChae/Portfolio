@@ -1,8 +1,10 @@
-// src/components/ProjectCard.js
 import React from "react";
-import "./ProjectCard.css";
+import ExpandableText from "./ExpandableText"; // ExpandableText 컴포넌트 임포트
+import "./ProjectCard.css"; // ProjectCard의 스타일시트
 
 const ProjectCard = ({ project, index }) => {
+  // description이 길 경우를 대비하여 shortDescription을 생성하거나 잘라냅니다.
+  // 이 예시에서는 shortDescription이 projects 데이터에 이미 있으므로 그대로 사용합니다.
   return (
     <div className="image-driven-card" style={{ "--card-index": index }}>
       {/* 왼쪽: 이미지 영역 */}
@@ -19,7 +21,11 @@ const ProjectCard = ({ project, index }) => {
       {/* 오른쪽: 텍스트 영역 */}
       <div className="info-container">
         <h2 className="project-title">{project.title}</h2>
-        <p className="project-description">{project.description}</p>
+        {/* ExpandableText 컴포넌트를 사용하여 설명 표시 */}
+        <ExpandableText
+          shortText={project.shortDescription}
+          fullText={project.description}
+        />
         <p className="project-tech-stack">
           <strong>Tech Stack:</strong> {project.technologies.join(", ")}
         </p>

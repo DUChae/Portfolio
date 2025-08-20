@@ -1,3 +1,5 @@
+/* src/components/ProjectsPage.css */
+
 /* 프로젝트 페이지 전체 스타일 */
 .projects-page {
   position: relative;
@@ -7,12 +9,13 @@
   flex-direction: column;
   align-items: center;
   color: white;
+  background-color: #1a1a2e; /* 다크 테마 배경색 */
 }
 
 /* 페이지 제목 스타일 */
 .page-title {
   font-size: 2.5rem;
-  color: #61dafb;
+  color: #61dafb; /* React 로고 색상 */
   margin-bottom: 2rem;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 
@@ -43,4 +46,19 @@
 }
 
 /* BackButton 위치 등 필요하다면 추가 */
-/* ... */
+.back-button {
+  position: absolute;
+  top: 20px;
+  right: 20px; /* 여기를 right로 변경 */
+  padding: 10px 15px;
+  /* background-color: #3f72af; */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #2a5280;
+}
