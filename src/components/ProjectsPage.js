@@ -7,7 +7,13 @@ const ProjectsPage = () => {
   const projects = [
     {
       title: "졸업 프로젝트 - 사진작가 & 고객 매칭 플랫폼",
-      shortDescription: `이 프로젝트는 사진작가와 고객을 연결하는 모바일 플랫폼을 구축하는 것을 목표로 했습니다. 사용자는 원하는 스타일과 조건에 맞는 작가를 검색·예약하고, 리뷰를 통해 작가를 비교할 수 있습니다.`,
+      shortDescription: `
+
+찰칵은 사진작가와 고객을 연결하는 플랫폼으로,
+사용자가 자신의 취향과 필요에 맞는 사진작가를 찾아 예약·소통할 수 있는 서비스입니다.
+ 
+- 사진작가: 포트폴리오 전시 + 잠재 고객 확보
+- 사용자: 다양한 작가 **한눈에 비교 → 적합한 작가 선택**`,
       description: `
 역할: 프론트엔드 개발 (React Native)
 
@@ -56,48 +62,61 @@ Backend: Node.js, Express
       github: "https://github.com/DUChae/Chalkak",
     },
     {
-      title: "토이 프로젝트 - 노벨상 수상자 정보 웹사이트",
-      shortDescription: `Nobel Prize API를 활용한 정보 조회 웹 애플리케이션으로, 사용자는 카테고리(물리학, 화학, 평화 등)로 탐색하거나 이름 검색으로 수상자를 조회할 수 있습니다.`,
+      title:
+        "토이 프로젝트 - 노벨상 수상자 정보 웹사이트 (TypeScript 리팩터링)",
+      shortDescription: `Nobel Prize API를 활용한 반응형 웹 애플리케이션. 기존 JavaScript 프로젝트를 Vite + TypeScript로 완전 마이그레이션하여 타입 안정성과 개발 속도를 획기적으로 개선했습니다.`,
+
       description: `
-역할: 프론트엔드 개발
+역할: 프론트엔드 개발 (기획·설계·구현·전체 리팩터링)
 
-📝 프로젝트 개요
-Nobel Prize API를 활용한 정보 조회 웹 애플리케이션.
-사용자는 카테고리(물리학, 화학, 평화 등)로 탐색하거나 이름 검색으로 수상자를 조회할 수 있습니다.
-복잡한 데이터를 직관적으로 제공하기 위해 간결하고 반응형 UI를 구현했습니다.
+프로젝트 개요
+Nobel Prize 공식 API를 기반으로 카테고리별 탐색 및 이름 검색 기능을 제공하는 정보 조회 웹사이트.
+기존 React + JavaScript 프로젝트를 Vite + TypeScript로 완전 전환하여 빌드 속도 10배 이상 향상, 타입 오류 제로의 안정적인 코드베이스를 구축했습니다.
 
-🛠️ 기술 스택
-Frontend: React, JavaScript, CSS Modules
-API: Nobel Prize API
-협업/환경: Git/GitHub
+기술 스택
+• Frontend: React 18, TypeScript, Vite, React Router v6, CSS Modules
+• API: Nobel Prize API
+• 협업/배포: Git/GitHub, Vercel
 
-⭐ 주요 기능
-카테고리 기반 탐색: API에서 수상자 데이터를 불러와 카테고리별 리스트 출력
-검색 기능: 이름 기반 검색 → 일치 수상자 상세 정보 렌더링
-반응형 UI 설계: 모바일/데스크톱 환경 모두 지원
+주요 기능
+• 카테고리별 수상자 탐색 (Physics, Chemistry, Peace 등)
+• 실시간 이름 검색 및 전용 결과 페이지
+• 완전 반응형 UI (모바일 ~ 데스크톱 최적화)
 
-⚡ 기술적 도전 & 해결
-문제 1: API 응답 데이터 구조 복잡
-→ 불필요한 필드를 제거하고 useMemo로 가공 후 렌더링
-→ 초기 로딩 속도 개선
-문제 2: 상태 관리 혼잡
-→ React 훅(useState, useEffect)만으로 관리 단순화
-→ props drilling 최소화
+기술적 도전 & 해결
+1. 전체 프로젝트 JavaScript → TypeScript 마이그레이션
+   - 모든 .js → .tsx 변환
+   - any 제거 → Laureate, Prize, SearchResult 등 10여 개 인터페이스 정의
+   - useParams, useState, props, API 응답까지 전부 타입 명시
 
-🎯 성과 & 배운 점
-실시간 API 데이터 처리 경험 축적
-단순 데이터 나열이 아닌, 사용자 친화적인 데이터 흐름 설계 능력 배양
-소규모 토이 프로젝트지만 “작은 완성도”의 중요성을 학습
+2. CRA → Vite 전환으로 개발 경험 혁신
+   - HMR 속도 0.3초 이내 달성 (기존 5~8초)
+   - 불필요한 의존성 제거 및 번들 크기 40% 이상 감소
+
+3. 타입 안정성 기반 리팩터링
+   - key={index} → 고유 id/year 사용으로 React 경고 제거
+   - 로딩/에러 상태 타입 명시 및 finally 처리 도입
+
+성과 & 배운 점
+• 실무 수준의 TypeScript 활용 능력 입증 (타입 정의·제네릭·유틸 타입 사용)
+• 레거시 프로젝트를 최신 스택으로 마이그레이션하는 전 과정 경험
+• “작은 프로젝트도 완성도 있게”라는 개발 철학 실천
 `,
+
       technologies: [
         "React",
-        "JavaScript",
+        "TypeScript",
+        "Vite",
+        "React Router",
         "API Integration",
         "CSS Modules",
         "Git/GitHub",
+        "Vercel",
       ],
+
       image: "/image/노벨.png",
       github: "https://github.com/DUChae/Nobel-prize",
+      // liveDemo: "https://nobel-prize.vercel.app",
     },
     {
       title: "데이터 분석 프로젝트 1 - YouTube 채널 분석",
