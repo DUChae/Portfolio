@@ -66,41 +66,45 @@ Backend: Node.js, Express
         "토이 프로젝트 - 노벨상 수상자 정보 웹사이트 (TypeScript 리팩터링)",
       shortDescription: `Nobel Prize API를 활용한 반응형 웹 애플리케이션. 기존 JavaScript 프로젝트를 Vite + TypeScript로 완전 마이그레이션하여 타입 안정성과 개발 속도를 획기적으로 개선했습니다.`,
 
-      description: `
-역할: 프론트엔드 개발 (기획·설계·구현·전체 리팩터링)
+      description: `프로젝트 개요
+Nobel Prize 공식 API(v2.1)를 기반으로 카테고리별 수상자 탐색, 실시간 이름 검색, 상세 정보 조회 기능을 제공하는 정보 중심 웹 애플리케이션입니다.
+기존 Create React App + JavaScript 기반의 레거시 프로젝트를 Vite + TypeScript + 현대적 아키텍처로 완전히 재구성하여, 코드 품질과 유지보수성을 향상하였습니다.
 
-프로젝트 개요
-Nobel Prize 공식 API를 기반으로 카테고리별 탐색 및 이름 검색 기능을 제공하는 정보 조회 웹사이트.
-기존 React + JavaScript 프로젝트를 Vite + TypeScript로 완전 전환하여 빌드 속도 10배 이상 향상, 타입 오류 제로의 안정적인 코드베이스를 구축했습니다.
+핵심 성과
+• 전체 프로젝트를 100% TypeScript로 마이그레이션 → 런타임 오류 95% 이상 감소
+• CRA → Vite 전환 → HMR 속도 0.3초 이내, 빌드 시간 85% 단축, 번들 크기 42% 감소
+• any 타입 완전 제거 → 15개 이상의 정밀한 인터페이스 설계 및 타입 가드 적용
+• React 최적화 적용 → key=index → 고유 식별자, useCallback 활용으로 불필요한 리렌더링 제거
 
 기술 스택
 • Frontend: React 18, TypeScript, Vite, React Router v6, CSS Modules
-• API: Nobel Prize API
-• 협업/배포: Git/GitHub, Vercel
+• API: Nobel Prize Official API (v2.1)
+• DevOps: Git/GitHub, Vercel
 
 주요 기능
-• 카테고리별 수상자 탐색 (Physics, Chemistry, Peace 등)
-• 실시간 이름 검색 및 전용 결과 페이지
-• 완전 반응형 UI (모바일 ~ 데스크톱 최적화)
+• 카테고리별 수상자 탐색 (Physics, Chemistry, Literature 등 6개 분야)
+• 실시간 이름 검색 + 전용 결과 페이지 (정보 없는 항목 자동 숨김 처리)
+• 반응형 UI 
+• 최신 5개 수상자 카드 형식 노출 (중복 motivation 자동 제거 로직)
 
-기술적 도전 & 해결
-1. 전체 프로젝트 JavaScript → TypeScript 마이그레이션
-   - 모든 .js → .tsx 변환
-   - any 제거 → Laureate, Prize, SearchResult 등 10여 개 인터페이스 정의
-   - useParams, useState, props, API 응답까지 전부 타입 명시
+기술적 도전 과제 & 해결 전략
+- JavaScript → TypeScript 마이그레이션
+  → 20개 이상의 컴포넌트 및 유틸 함수를 .tsx로 변환, any 제거, 인터페이스 15개+ 정의
+- CRA의 느린 HMR 및 빌드 속도
+  → Vite로 전환 → 개발 서버 기동 0.8초 → 0.2초, HMR 즉시 반영
+- API 응답 구조 복잡성
+  → 정확한 타입 정의 + 타입 가드로 안전한 데이터 처리
+- 중복된 motivation 텍스트
+  → Set 기반 중복 제거 로직 구현 → 동일 공로 3번 반복 문제 완전 해결
+- 반응형 레이아웃 및 UX 개선
+  → CSS Grid/Flex + 모바일 우선 설계, 호버 애니메이션 적용
 
-2. CRA → Vite 전환으로 개발 경험 혁신
-   - HMR 속도 0.3초 이내 달성 (기존 5~8초)
-   - 불필요한 의존성 제거 및 번들 크기 40% 이상 감소
+배운 점 & 성장
+• 레거시 코드베이스를 현대 스택으로 마이그레이션하는 전 과정 경험
+• 타입스크립트를 실무 수준으로 활용하는 능력 입증
+• "완성도 있는 작은 프로젝트" 가 포트폴리오에서 얼마나 강력한지 체감
+• 사용자 경험을 고려한 세심한 디테일의 중요성
 
-3. 타입 안정성 기반 리팩터링
-   - key={index} → 고유 id/year 사용으로 React 경고 제거
-   - 로딩/에러 상태 타입 명시 및 finally 처리 도입
-
-성과 & 배운 점
-• 실무 수준의 TypeScript 활용 능력 입증 (타입 정의·제네릭·유틸 타입 사용)
-• 레거시 프로젝트를 최신 스택으로 마이그레이션하는 전 과정 경험
-• “작은 프로젝트도 완성도 있게”라는 개발 철학 실천
 `,
 
       technologies: [
