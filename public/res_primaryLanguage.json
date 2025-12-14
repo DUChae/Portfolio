@@ -1,0 +1,143 @@
+{
+  "basic_info": {
+    "description_header": "안녕하세요",
+    "description": "👋 다양한 기술 스택을 활용해 실제로 동작하는 서비스를 만들어온 풀스택 개발자입니다. React, React Native 앱, 실시간 번역 채팅, Spring Boot 기반 API 등 여러 프로젝트를 직접 기획하고 구현하며 문제 해결 능력을 쌓았습니다. 기술 선택의 이유를 고민하고, 더 나은 구조와 사용자 경험을 만드는 데 집중합니다.",
+    "section_name": {
+      "about": "소개",
+      "projects": "프로젝트",
+      "skills": "기술 스택",
+      "experience": "경력"
+    }
+  },
+
+  "projects": [
+    {
+      "title": "졸업 프로젝트 - 사진작가 & 고객 매칭 플랫폼",
+      "startDate": "2023",
+      "description": "React Native 기반으로 사진작가와 고객을 매칭해주는 모바일 플랫폼을 개발했습니다. 포트폴리오 조회, 예약 기능, 리뷰 및 커뮤니티 기능까지 포함된 실사용 수준의 MVP를 구현했습니다. 모바일 환경에서 발생하는 API 지연, 대량 데이터 렌더링 문제 등을 해결하며 안정적인 사용자 경험을 구축했습니다.",
+      "images": ["/images/portfolio/grad/졸프홈.png"],
+      "url": "https://github.com/DUChae/Chalkak",
+      "technologies": [
+        { "class": "devicon-react-original", "name": "React Native" },
+        { "class": "devicon-javascript-plain", "name": "JavaScript" },
+        { "class": "devicon-nodejs-plain", "name": "Node.js" },
+        { "class": "devicon-express-original", "name": "Express" },
+        { "class": "devicon-git-plain", "name": "Git/GitHub" }
+      ]
+    },
+
+    {
+      "title": "노벨상 수상자 정보 웹사이트 (TypeScript 리팩터링)",
+      "startDate": "2024",
+      "description": "Nobel Prize 공식 API를 기반으로 수상자 정보를 탐색하는 웹사이트를 개발했습니다. 기존 JavaScript 프로젝트를 Vite + TypeScript 기반으로 전면 마이그레이션하여 타입 안정성과 성능을 크게 개선했습니다. 중복 motivation 제거 로직, 반응형 UI, 검색 기능 등을 직접 설계했습니다.",
+      "images": ["/images/portfolio/nobel/노벨.png"],
+      "url": "https://github.com/DUChae/Nobel-prize",
+      "live": "https://nobel-prize-sooty.vercel.app",
+      "technologies": [
+        { "class": "devicon-react-original", "name": "React" },
+        { "class": "devicon-typescript-plain", "name": "TypeScript" },
+        { "class": "devicon-vuejs-plain", "name": "Vite" },
+        { "class": "devicon-javascript-plain", "name": "JavaScript" }
+      ]
+    },
+
+    {
+      "title": "데이터 분석 프로젝트 1 - YouTube 채널 분석",
+      "startDate": "2023",
+      "description": "YouTube API 데이터를 수집하여 조회수 및 구독자 증가 요인을 분석하고 Tableau로 대시보드를 제작했습니다. API 데이터 배치 수집, DB 저장, KPI 기반 시각화를 구성하며 실무형 데이터 파이프라인을 구축한 경험입니다.",
+      "images": ["/images/portfolio/youtube/유튭.png"],
+      "url": "https://github.com/DUChae/DataAnalysis_Youtube",
+      "technologies": [
+        { "class": "devicon-python-plain", "name": "Python" },
+        { "class": "devicon-mysql-plain", "name": "MySQL" },
+        { "class": "devicon-d3js-plain", "name": "Tableau" }
+      ]
+    },
+
+    {
+      "title": "데이터 분석 프로젝트 2 - IMDB 영화 데이터 분석",
+      "startDate": "2023",
+      "description": "IMDB 영화 데이터를 활용하여 장르별 트렌드와 흥행 요인을 분석한 프로젝트입니다. Python으로 데이터 전처리 및 분석을 수행하고, Tableau를 통해 직관적인 시각화를 구현했습니다.",
+      "images": ["/images/portfolio/imdb/imdb.png"],
+      "url": "https://github.com/DUChae/DataAnalysis_IMDB",
+      "technologies": [
+        { "class": "devicon-python-plain", "name": "Python" },
+        { "class": "devicon-mysql-plain", "name": "MySQL" },
+        { "class": "devicon-d3js-plain", "name": "Tableau" }
+      ]
+    },
+
+    {
+      "title": "Spring Boot 기반 게시판 웹 애플리케이션",
+      "startDate": "2023",
+      "description": "Spring Boot와 JPA를 사용해 게시글, 댓글, 좋아요 기능을 포함한 웹 애플리케이션을 개발했습니다. MVC와 REST API가 공존한 구조에서 발생한 인증 충돌 문제를 해결하며 Spring Security와 백엔드 아키텍처에 대한 실전 감각을 익혔습니다.",
+      "images": [],
+      "url": "https://github.com/DUChae/Spring-boot",
+      "technologies": [
+        { "class": "devicon-spring-plain", "name": "Spring Boot" },
+        { "class": "devicon-spring-plain", "name": "Spring Security" },
+        { "class": "devicon-mysql-plain", "name": "H2 Database" }
+      ]
+    },
+
+    {
+      "title": "Spring Boot 기반 RESTful 게시판 API",
+      "startDate": "2023",
+      "description": "Spring Boot와 JWT를 활용하여 인증·인가 기반의 RESTful 게시판 API를 구축했습니다. 데이터 소유권 검증, 중복 코드 리팩터링, MySQL 운영 DB 적용 등 실무에 가까운 구조를 직접 설계했습니다.",
+      "images": [],
+      "url": "https://github.com/DUChae/Study-REST-API",
+      "technologies": [
+        { "class": "devicon-spring-plain", "name": "Spring Boot" },
+        { "class": "devicon-spring-plain", "name": "JWT" },
+        { "class": "devicon-mysql-plain", "name": "MySQL" }
+      ]
+    },
+
+    {
+      "title": "실시간 다국어 번역 채팅 웹",
+      "startDate": "2024",
+      "description": "WebSocket과 Google Translation API를 활용해 언어가 달라도 실시간으로 대화할 수 있는 번역 채팅 웹을 개발했습니다. Socket.IO 기반의 실시간 통신 구조, MongoDB 데이터 저장 방식, 번역 API 연동 등 풀스택 구조를 직접 설계했습니다.",
+      "images": ["/images/portfolio/multi/Thumbnail.png"],
+      "url": "https://github.com/DUChae",
+      "technologies": [
+        { "class": "devicon-nodejs-plain", "name": "Node.js" },
+        { "class": "devicon-express-original", "name": "Express" },
+        { "class": "devicon-mongodb-plain", "name": "MongoDB" },
+        {
+          "class": "devicon-googlecloud-plain",
+          "name": "Google Translation API"
+        }
+      ]
+    }
+  ],
+
+  "experience": [
+    {
+      "company": "Independent Projects (개인 개발)",
+      "title": "풀스택 개발자",
+      "years": "2022 - 현재",
+      "mainTech": ["React", "Spring Boot", "Node.js"],
+      "technologies": [
+        "백엔드 API 설계 및 구현",
+        "JWT 인증/인가 개발",
+        "MySQL · MongoDB 모델링",
+        "리팩터링 및 성능 최적화",
+        "실시간 통신(Socket.IO) 적용",
+        "기획부터 배포까지 전체 서비스 사이클 경험"
+      ]
+    },
+    {
+      "company": "Graduation Project Team",
+      "title": "모바일 앱 개발자 (팀 프로젝트)",
+      "years": "2023.03 - 2023.12",
+      "mainTech": ["React Native", "Express"],
+      "technologies": [
+        "UI/UX 설계 협업",
+        "React Native 기반 앱 개발",
+        "Express 기반 REST API 구축",
+        "데이터 모델링",
+        "기능 우선순위 도출 및 일정 관리"
+      ]
+    }
+  ]
+}

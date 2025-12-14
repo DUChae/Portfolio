@@ -1,0 +1,142 @@
+{
+  "basic_info": {
+    "description_header": "Hi",
+    "description": "👋 I'm Jihoon, a full-stack developer who enjoys building practical and user-centered applications. I mainly work with React, React Native, Spring Boot, and Node.js. This portfolio showcases the projects I've built—from mobile applications to backend APIs and real-time services. Thanks for stopping by 💜",
+    "section_name": {
+      "about": "About me",
+      "projects": "Projects",
+      "skills": "Skills",
+      "experience": "Experience"
+    }
+  },
+
+  "projects": [
+    {
+      "title": "Graduation Project – Photographer & Client Matching Platform",
+      "startDate": "2023",
+      "description": "Developed a mobile platform built with React Native that connects photographers and clients. Implemented key features such as portfolio browsing, booking management, reviews, and community functions. Improved mobile performance issues including API latency and large data rendering to ensure smooth user experience.",
+      "images": ["/images/portfolio/grad/졸프홈.png"],
+      "url": "https://github.com/DUChae/Chalkak",
+      "technologies": [
+        { "class": "devicon-react-original", "name": "React Native" },
+        { "class": "devicon-javascript-plain", "name": "JavaScript" },
+        { "class": "devicon-nodejs-plain", "name": "Node.js" },
+        { "class": "devicon-express-original", "name": "Express" },
+        { "class": "devicon-git-plain", "name": "Git/GitHub" }
+      ]
+    },
+
+    {
+      "title": "Nobel Prize Information Web App (TypeScript Migration)",
+      "startDate": "2024",
+      "description": "Developed a web application using the official Nobel Prize API. Fully migrated the project from JavaScript to Vite + TypeScript to enhance type safety and performance. Designed custom logic to remove duplicate motivations, implemented responsive UI, and added search and data filtering features.",
+      "images": ["/images/portfolio/nobel/노벨.png"],
+      "url": "https://github.com/DUChae/Nobel-prize",
+      "technologies": [
+        { "class": "devicon-react-original", "name": "React" },
+        { "class": "devicon-typescript-plain", "name": "TypeScript" },
+        { "class": "devicon-vuejs-plain", "name": "Vite" },
+        { "class": "devicon-javascript-plain", "name": "JavaScript" }
+      ]
+    },
+
+    {
+      "title": "Data Analysis Project 1 – YouTube Channel Insights",
+      "startDate": "2023",
+      "description": "Collected data from the YouTube API to analyze factors influencing view count and subscriber growth. Built dashboards using Tableau and designed an ETL-style workflow: batch data collection, database storage, and KPI-driven visualization.",
+      "images": ["/images/portfolio/youtube/유튭.png"],
+      "url": "https://github.com/DUChae/DataAnalysis_Youtube",
+      "technologies": [
+        { "class": "devicon-python-plain", "name": "Python" },
+        { "class": "devicon-mysql-plain", "name": "MySQL" },
+        { "class": "devicon-d3js-plain", "name": "Tableau" }
+      ]
+    },
+
+    {
+      "title": "Data Analysis Project 2 – IMDB Movie Data",
+      "startDate": "2023",
+      "description": "Analyzed IMDB movie datasets to identify genre trends and box office performance patterns. Processed and explored data using Python, and built visual dashboards in Tableau to present insights clearly and effectively.",
+      "images": ["/images/portfolio/imdb/imdb.png"],
+      "url": "https://github.com/DUChae/DataAnalysis_IMDB",
+      "technologies": [
+        { "class": "devicon-python-plain", "name": "Python" },
+        { "class": "devicon-mysql-plain", "name": "MySQL" },
+        { "class": "devicon-d3js-plain", "name": "Tableau" }
+      ]
+    },
+
+    {
+      "title": "Spring Boot Web Bulletin Board",
+      "startDate": "2023",
+      "description": "Built a bulletin board application using Spring Boot and JPA, including features such as posts, comments, and likes. Resolved conflicts between MVC and REST API layers, gaining practical experience with Spring Security and backend architecture.",
+      "images": [],
+      "url": "https://github.com/DUChae/Spring-boot",
+      "technologies": [
+        { "class": "devicon-spring-plain", "name": "Spring Boot" },
+        { "class": "devicon-spring-plain", "name": "Spring Security" },
+        { "class": "devicon-mysql-plain", "name": "H2 Database" }
+      ]
+    },
+
+    {
+      "title": "RESTful Bulletin Board API (Spring Boot + JWT)",
+      "startDate": "2023",
+      "description": "Developed a RESTful API service with Spring Boot and JWT-based authentication/authorization. Designed ownership validation logic, refactored repetitive code, and implemented MySQL as the primary database to follow practical backend patterns.",
+      "images": [],
+      "url": "https://github.com/DUChae/Study-REST-API",
+      "technologies": [
+        { "class": "devicon-spring-plain", "name": "Spring Boot" },
+        { "class": "devicon-spring-plain", "name": "JWT" },
+        { "class": "devicon-mysql-plain", "name": "MySQL" }
+      ]
+    },
+
+    {
+      "title": "Real-Time Multilingual Translation Chat",
+      "startDate": "2024",
+      "description": "Created a multilingual chat application supporting real-time translation using WebSocket and the Google Translation API. Designed the entire full-stack architecture, including Socket.IO communication, MongoDB message storage, and translation pipeline integration.",
+      "images": ["/images/portfolio/multi/Thumbnail.png"],
+      "url": "https://github.com/DUChae",
+      "technologies": [
+        { "class": "devicon-nodejs-plain", "name": "Node.js" },
+        { "class": "devicon-express-original", "name": "Express" },
+        { "class": "devicon-mongodb-plain", "name": "MongoDB" },
+        {
+          "class": "devicon-googlecloud-plain",
+          "name": "Google Translation API"
+        }
+      ]
+    }
+  ],
+
+  "experience": [
+    {
+      "company": "Independent Projects",
+      "title": "Full Stack Developer",
+      "years": "2022 - Present",
+      "mainTech": ["React", "Spring Boot", "Node.js"],
+      "technologies": [
+        "Backend API design and development",
+        "JWT-based authentication and authorization",
+        "Database modeling (MySQL, MongoDB)",
+        "Code refactoring and performance optimization",
+        "Real-time communication using Socket.IO",
+        "Managing the entire product cycle from planning to deployment"
+      ]
+    },
+    {
+      "company": "Graduation Project Team",
+      "title": "Mobile App Developer (Team Project)",
+      "years": "03.2023 - 12.2023",
+      "mainTech": ["React Native", "Express"],
+      "technologies": [
+        "Collaborative UI/UX design",
+        "React Native mobile app development",
+        "Express-based REST API development",
+        "Database modeling",
+        "Feature prioritization and project timeline management"
+      ]
+    }
+  ]
+}
