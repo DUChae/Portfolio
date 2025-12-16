@@ -126,7 +126,7 @@ class App extends Component {
         {isDataLoaded ? (
           <>
             <About
-              resumeBasicInfo={this.state.resumeData.basic_info}
+              resumeBasicInfo={this.state.resumeData}
               sharedBasicInfo={this.state.sharedData.basic_info}
             />
             <Projects
