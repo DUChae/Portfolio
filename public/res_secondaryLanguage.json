@@ -1,20 +1,46 @@
 {
   "basic_info": {
-    "description_header": "Hi",
-    "description": "👋 I'm Jihoon, a full-stack developer who enjoys building practical and user-centered applications. I mainly work with React, React Native, Spring Boot, and Node.js. This portfolio showcases the projects I've built—from mobile applications to backend APIs and real-time services. Thanks for stopping by 💜",
+    "description_header": "Hello",
     "section_name": {
-      "about": "About me",
+      "about": "About",
       "projects": "Projects",
-      "skills": "Skills",
+      "skills": "Tech Stack",
       "experience": "Experience"
     }
   },
-
+  "about_summary": "👋 I'm Jihoon, a Full-stack Developer who completes projects by leveraging diverse technical stacks to deliver functional services. I have built development capabilities by directly planning and implementing various projects, including React/React Native frontends, Spring Boot/Node.js backend APIs, and real-time services using WebSocket. I focus not just on 'making things,' but constantly considering why a specific technology was chosen and how to create better structure and user experience.",
+  "about_sections": [
+    {
+      "title": "Front-end Development Focused on User Experience",
+      "details": [
+        "I have primarily used React and React Native to design web and mobile UIs, prioritizing user flow and interaction.",
+        "In my graduation project, I improved the UI/UX based on actual user surveys and enhanced usability by redesigning the search and category structure.",
+        "I focus on creating easy-to-use services, moving beyond just visually appealing interfaces, through the application of TypeScript, responsive layouts, and performance optimization (e.g., lazy loading, eliminating unnecessary rendering)."
+      ]
+    },
+    {
+      "title": "A Development Approach Focused on Complete Problem Solving",
+      "details": [
+        "I adhere to the principle of always resolving shortcomings from a previous project in the next one.",
+        "I have consistently verified the entire process: **'Why is it inconvenient → How to fix it → Has it actually improved?'** This included refactoring JavaScript-based projects entirely to TypeScript, replacing slow build environments with Vite, and structurally solving issues of redundant data and logic.",
+        "Through this process, I naturally acquired a feel for code quality, maintainability, and performance."
+      ]
+    },
+    {
+      "title": "Data-Driven Developer",
+      "details": [
+        "I prefer to make decisions based on data rather than relying on intuition.",
+        "In my graduation project, I adjusted feature priorities by analyzing user survey results, and in personal projects, I improved UI and data flow by analyzing API response structures and usage patterns.",
+        "I gained experience interpreting data and connecting it to insights through YouTube and IMDB data analysis projects, affirming the importance of evidence and metrics in development."
+      ]
+    }
+  ],
+  "about_conclusion": "I aim for development that solves user problems, not technology for technology's sake. I strive to be a developer who grows by quickly learning in new environments and constantly thinking about better structures.",
   "projects": [
     {
-      "title": "Graduation Project – Photographer & Client Matching Platform",
+      "title": "Graduation Project - Photographer & Client Matching Platform",
       "startDate": "2023",
-      "description": "Developed a mobile platform built with React Native that connects photographers and clients. Implemented key features such as portfolio browsing, booking management, reviews, and community functions. Improved mobile performance issues including API latency and large data rendering to ensure smooth user experience.",
+      "description": "Developed a React Native-based mobile platform to match photographers with clients. Implemented a minimum viable product (MVP) at a practical usage level, including portfolio viewing, booking features, reviews, and community functions. Achieved a stable user experience by resolving issues like API latency and mass data rendering typical in mobile environments.",
       "images": ["/images/portfolio/grad/졸프홈.png"],
       "url": "https://github.com/DUChae/Chalkak",
       "technologies": [
@@ -25,13 +51,13 @@
         { "class": "devicon-git-plain", "name": "Git/GitHub" }
       ]
     },
-
     {
-      "title": "Nobel Prize Information Web App (TypeScript Migration)",
+      "title": "Nobel Laureate Information Website (TypeScript Refactoring)",
       "startDate": "2024",
-      "description": "Developed a web application using the official Nobel Prize API. Fully migrated the project from JavaScript to Vite + TypeScript to enhance type safety and performance. Designed custom logic to remove duplicate motivations, implemented responsive UI, and added search and data filtering features.",
+      "description": "Developed a website to explore Nobel Prize laureate information based on the official Nobel Prize API. Significantly improved type safety and performance by fully migrating the existing JavaScript project to a Vite + TypeScript foundation. Personally designed logic for duplicate motivation removal, responsive UI, and search functionalities.",
       "images": ["/images/portfolio/nobel/노벨.png"],
       "url": "https://github.com/DUChae/Nobel-prize",
+      "live": "https://nobel-prize-sooty.vercel.app",
       "technologies": [
         { "class": "devicon-react-original", "name": "React" },
         { "class": "devicon-typescript-plain", "name": "TypeScript" },
@@ -39,11 +65,10 @@
         { "class": "devicon-javascript-plain", "name": "JavaScript" }
       ]
     },
-
     {
-      "title": "Data Analysis Project 1 – YouTube Channel Insights",
+      "title": "Data Analysis Project 1 - YouTube Channel Analysis",
       "startDate": "2023",
-      "description": "Collected data from the YouTube API to analyze factors influencing view count and subscriber growth. Built dashboards using Tableau and designed an ETL-style workflow: batch data collection, database storage, and KPI-driven visualization.",
+      "description": "Collected YouTube API data to analyze factors driving views and subscriber growth, and created a dashboard using Tableau. Experience in building a practical data pipeline, including batch collection of API data, database storage, and KPI-based visualization.",
       "images": ["/images/portfolio/youtube/유튭.png"],
       "url": "https://github.com/DUChae/DataAnalysis_Youtube",
       "technologies": [
@@ -52,11 +77,10 @@
         { "class": "devicon-d3js-plain", "name": "Tableau" }
       ]
     },
-
     {
-      "title": "Data Analysis Project 2 – IMDB Movie Data",
+      "title": "Data Analysis Project 2 - IMDB Movie Data Analysis",
       "startDate": "2023",
-      "description": "Analyzed IMDB movie datasets to identify genre trends and box office performance patterns. Processed and explored data using Python, and built visual dashboards in Tableau to present insights clearly and effectively.",
+      "description": "A project utilizing IMDB movie data to analyze genre trends and box office drivers. Performed data preprocessing and analysis using Python and implemented intuitive visualization through Tableau.",
       "images": ["/images/portfolio/imdb/imdb.png"],
       "url": "https://github.com/DUChae/DataAnalysis_IMDB",
       "technologies": [
@@ -65,11 +89,10 @@
         { "class": "devicon-d3js-plain", "name": "Tableau" }
       ]
     },
-
     {
-      "title": "Spring Boot Web Bulletin Board",
+      "title": "Spring Boot-based Bulletin Board Web Application",
       "startDate": "2023",
-      "description": "Built a bulletin board application using Spring Boot and JPA, including features such as posts, comments, and likes. Resolved conflicts between MVC and REST API layers, gaining practical experience with Spring Security and backend architecture.",
+      "description": "Developed a web application using Spring Boot and JPA, including features for posts, comments, and likes. Gained practical experience with Spring Security and backend architecture by resolving authentication conflict issues arising from a mixed MVC/REST API structure.",
       "images": [],
       "url": "https://github.com/DUChae/Spring-boot",
       "technologies": [
@@ -78,11 +101,10 @@
         { "class": "devicon-mysql-plain", "name": "H2 Database" }
       ]
     },
-
     {
-      "title": "RESTful Bulletin Board API (Spring Boot + JWT)",
+      "title": "Spring Boot-based RESTful Bulletin Board API",
       "startDate": "2023",
-      "description": "Developed a RESTful API service with Spring Boot and JWT-based authentication/authorization. Designed ownership validation logic, refactored repetitive code, and implemented MySQL as the primary database to follow practical backend patterns.",
+      "description": "Built a RESTful bulletin board API based on authentication and authorization using Spring Boot and JWT. Personally designed a structure close to real-world applications, including data ownership verification, refactoring duplicate code, and implementing MySQL as the operating database.",
       "images": [],
       "url": "https://github.com/DUChae/Study-REST-API",
       "technologies": [
@@ -91,11 +113,10 @@
         { "class": "devicon-mysql-plain", "name": "MySQL" }
       ]
     },
-
     {
-      "title": "Real-Time Multilingual Translation Chat",
+      "title": "Real-time Multilingual Translation Chat Web",
       "startDate": "2024",
-      "description": "Created a multilingual chat application supporting real-time translation using WebSocket and the Google Translation API. Designed the entire full-stack architecture, including Socket.IO communication, MongoDB message storage, and translation pipeline integration.",
+      "description": "Developed a translation chat web utilizing WebSocket and Google Translation API, allowing real-time conversation between users with different languages. Designed the full-stack structure, including Socket.IO-based real-time communication, MongoDB data storage, and translation API integration.",
       "images": ["/images/portfolio/multi/Thumbnail.png"],
       "url": "https://github.com/DUChae",
       "technologies": [
@@ -109,33 +130,32 @@
       ]
     }
   ],
-
   "experience": [
     {
       "company": "Independent Projects",
-      "title": "Full Stack Developer",
+      "title": "Full-stack Developer",
       "years": "2022 - Present",
       "mainTech": ["React", "Spring Boot", "Node.js"],
       "technologies": [
-        "Backend API design and development",
-        "JWT-based authentication and authorization",
-        "Database modeling (MySQL, MongoDB)",
-        "Code refactoring and performance optimization",
-        "Real-time communication using Socket.IO",
-        "Managing the entire product cycle from planning to deployment"
+        "Backend API Design and Implementation",
+        "JWT Authentication/Authorization Development",
+        "MySQL · MongoDB Data Modeling",
+        "Refactoring and Performance Optimization",
+        "Real-time Communication (Socket.IO) Integration",
+        "Experience across the entire service lifecycle (Planning to Deployment)"
       ]
     },
     {
       "company": "Graduation Project Team",
       "title": "Mobile App Developer (Team Project)",
-      "years": "03.2023 - 12.2023",
+      "years": "Mar 2023 - Dec 2023",
       "mainTech": ["React Native", "Express"],
       "technologies": [
-        "Collaborative UI/UX design",
-        "React Native mobile app development",
-        "Express-based REST API development",
-        "Database modeling",
-        "Feature prioritization and project timeline management"
+        "Collaboration on UI/UX Design",
+        "React Native-based App Development",
+        "Express-based REST API Construction",
+        "Data Modeling",
+        "Feature Prioritization and Schedule Management"
       ]
     }
   ]
