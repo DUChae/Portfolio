@@ -1,14 +1,3 @@
-// About.js: 소개 섹션 컴포넌트 – props 이름 변경에 맞춰 수정 (resumeBasicInfo → resumeData)
-// Key requirements:
-// 1. App.js에서 resumeBasicInfo={this.state.resumeData}로 전달 시 전체 데이터 받음
-// 2. 기존 구조(basic_info.description_header, .description) + 새 구조(about_summary 등) 모두 지원 (호환성)
-// 3. 데이터 없으면 로딩 메시지 표시
-// Please consider:
-// - Error handling: resumeBasicInfo 없거나 키 없으면 fallback (크래시 방지)
-// - Edge cases: 새 구조 키 없으면 기존 description 사용 (호환성)
-// - Performance optimization: 불필요한 연산 최소화
-// - Best practices for React: props 안전 접근 (optional chaining), class component 구조 유지
-
 import React, { Component } from "react";
 import { Icon } from "@iconify/react";
 import angularIcon from "@iconify/icons-logos/angular-icon";
