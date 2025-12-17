@@ -1,38 +1,27 @@
 import React, { Component } from "react";
-import { Icon } from "@iconify/react";
-import angularIcon from "@iconify/icons-logos/angular-icon";
-import reactIcon from "@iconify/icons-logos/react";
-import vueIcon from "@iconify/icons-logos/vue";
+// import { Icon } from "@iconify/react"; // 컴포넌트 방식이 안 될 경우 필요 없음
 
 class About extends Component {
   render() {
-    const { resumeBasicInfo, sharedBasicInfo } = this.props; // resumeBasicInfo가 전체 resumeData
+    const { resumeBasicInfo, sharedBasicInfo } = this.props;
 
-    // 데이터 없으면 로딩 메시지 (error handling)
     if (!resumeBasicInfo || !sharedBasicInfo) {
       return <div className="col-md-12 text-center">소개 로딩 중...</div>;
     }
 
     const profilepic = "images/portfolio/photo/ID_Photo.jpg";
 
-    // 기존 구조 호환 (기존 JSON 사용 시)
     const sectionName =
       resumeBasicInfo.basic_info?.section_name?.about ||
       resumeBasicInfo.section_name?.about ||
       "소개";
     const hello =
       resumeBasicInfo.basic_info?.description_header || "안녕하세요";
-    const oldAbout =
-      resumeBasicInfo.basic_info?.description ||
-      resumeBasicInfo.description ||
-      "";
 
-    // 새 구조 지원 (about_summary, about_sections, about_conclusion)
     const summary = resumeBasicInfo.about_summary;
     const sections = resumeBasicInfo.about_sections || [];
     const conclusion = resumeBasicInfo.about_conclusion;
 
-    // about_sections 렌더링 (edge case: 빈 배열 처리)
     const aboutContent =
       sections.length > 0
         ? sections.map((section, index) => (
@@ -48,7 +37,9 @@ class About extends Component {
               </h2>
               <ul style={{ paddingLeft: "1.5rem", lineHeight: "1.8" }}>
                 {section.details.map((detail, i) => (
-                  <li key={i}>{detail}</li>
+                  <li key={i}>
+                    <span dangerouslySetInnerHTML={{ __html: detail }} />
+                  </li>
                 ))}
               </ul>
             </div>
@@ -66,18 +57,35 @@ class About extends Component {
               <div className="polaroid">
                 <span style={{ cursor: "auto" }}>
                   <img height="250px" src={profilepic} alt="Profile" />
-                  <Icon
-                    icon={angularIcon}
-                    style={{ fontSize: "400%", margin: "9% 5% 0 5%" }}
-                  />
-                  <Icon
-                    icon={reactIcon}
-                    style={{ fontSize: "400%", margin: "9% 5% 0 5%" }}
-                  />
-                  <Icon
-                    icon={vueIcon}
-                    style={{ fontSize: "400%", margin: "9% 5% 0 5%" }}
-                  />
+
+                  {/* 핵심 수정: Skills.js와 동일한 span 태그 방식으로 교체 */}
+                  <span
+                    className="iconify"
+                    data-icon="skill-icons:javascript"
+                    style={{
+                      fontSize: "400%",
+                      margin: "9% 5% 0 5%",
+                      display: "inline-block",
+                    }}
+                  ></span>
+                  <span
+                    className="iconify"
+                    data-icon="logos:react"
+                    style={{
+                      fontSize: "400%",
+                      margin: "9% 5% 0 5%",
+                      display: "inline-block",
+                    }}
+                  ></span>
+                  <span
+                    className="iconify"
+                    data-icon="tabler:sql"
+                    style={{
+                      fontSize: "400%",
+                      margin: "9% 5% 0 5%",
+                      display: "inline-block",
+                    }}
+                  ></span>
                 </span>
               </div>
             </div>
@@ -89,19 +97,16 @@ class About extends Component {
                     <span
                       className="iconify"
                       data-icon="emojione:red-circle"
-                      data-inline="false"
                     ></span>{" "}
                     &nbsp;
                     <span
                       className="iconify"
                       data-icon="twemoji:yellow-circle"
-                      data-inline="false"
                     ></span>{" "}
                     &nbsp;
                     <span
                       className="iconify"
                       data-icon="twemoji:green-circle"
-                      data-inline="false"
                     ></span>
                   </div>
                   <div
@@ -116,25 +121,25 @@ class About extends Component {
                     <span className="wave">{hello} :)</span>
                     <br />
                     <br />
-
-                    {/* 새 구조 우선, 없으면 기존 description 사용 (호환성) */}
-                    {summary ? (
-                      <p>{summary}</p>
-                    ) : oldAbout ? (
-                      <p>{oldAbout}</p>
-                    ) : null}
-
+                    {summary && (
+                      <p>
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html: summary.replace(/\n/g, "<br/>"),
+                          }}
+                        />
+                      </p>
+                    )}
                     <br />
-
-                    {/* 구조화된 섹션 */}
                     {aboutContent}
-
                     <br />
-
-                    {/* 마무리 문장 */}
                     {conclusion && (
                       <p style={{ fontStyle: "italic", color: "#555" }}>
-                        {conclusion}
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html: conclusion.replace(/\n/g, "<br/>"),
+                          }}
+                        />
                       </p>
                     )}
                   </div>
