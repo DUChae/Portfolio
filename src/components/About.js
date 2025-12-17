@@ -37,7 +37,7 @@ class About extends Component {
       sections.length > 0
         ? sections.map((section, index) => (
             <div key={index} style={{ marginBottom: "2.5rem" }}>
-              <h4
+              <h2
                 style={{
                   fontWeight: "bold",
                   color: "#333",
@@ -45,7 +45,7 @@ class About extends Component {
                 }}
               >
                 {section.title}
-              </h4>
+              </h2>
               <ul style={{ paddingLeft: "1.5rem", lineHeight: "1.8" }}>
                 {section.details.map((detail, i) => (
                   <li key={i}>{detail}</li>
