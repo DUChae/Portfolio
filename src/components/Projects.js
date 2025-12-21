@@ -22,22 +22,22 @@ class Projects extends Component {
           .replace(/\n/g, "<br/>")
           .replace(
             /\*\*(.*?)\*\*/g,
-            "<strong style='color:#0f172a; font-weight:700;'>$1</strong>"
+            "<strong style='color:var(--text-main); font-weight:700;'>$1</strong>"
           )
-          // 섹션 헤더 디자인 (Linear 스타일)
+          // 섹션 헤더 디자인
           .replace(
             /### (.*?)(<br\/>|$)/g,
-            "<div style='margin-top:45px; margin-bottom:20px;'><span style='font-size:0.85rem; font-weight:800; color:#8e70ff; text-transform:uppercase; letter-spacing:0.1em; display:block; margin-bottom:8px;'>Section</span><h4 style='font-weight:800; color:#1e293b; font-size:1.6rem; letter-spacing:-0.03em; margin:0;'>$1</h4></div>"
+            "<div style='margin-top:45px; margin-bottom:20px;'><span style='font-size:0.85rem; font-weight:800; color:var(--accent-color); text-transform:uppercase; letter-spacing:0.1em; display:block; margin-bottom:8px;'>Section</span><h4 style='font-weight:800; color:var(--text-main); font-size:1.6rem; letter-spacing:-0.03em; margin:0;'>$1</h4></div>"
           )
-          // Key Insights 강조 (카드 스타일)
+          // Key Insights 강조 (다크모드에서도 눈에 띄도록 주황색 계열 유지하되 배경 조절)
           .replace(
             /### Key Insights/g,
-            "<div style='margin-top:45px; margin-bottom:20px; padding:20px; background:#fff7ed; border-radius:16px; border-left:4px solid #f59e0b;'><span style='font-size:0.85rem; font-weight:800; color:#d97706; text-transform:uppercase; letter-spacing:0.1em; display:block; margin-bottom:4px;'>Valuable Discovery</span><h4 style='font-weight:800; color:#9a3412; font-size:1.6rem; letter-spacing:-0.03em; margin:0;'>Key Insights</h4></div>"
+            "<div style='margin-top:45px; margin-bottom:20px; padding:20px; background:var(--bg-dot); border-radius:16px; border-left:4px solid #f59e0b;'><span style='font-size:0.85rem; font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:0.1em; display:block; margin-bottom:4px;'>Valuable Discovery</span><h4 style='font-weight:800; color:var(--text-main); font-size:1.6rem; letter-spacing:-0.03em; margin:0;'>Key Insights</h4></div>"
           )
-          // 리스트 아이템 (체크 아이콘 스타일)
+          // 리스트 아이템
           .replace(
             /- (.*?)(<br\/>|$)/g,
-            "<div style='margin-bottom:12px; padding-left:28px; position:relative; color:#475569; font-size:1.1rem; line-height:1.6;'><span style='position:absolute; left:0; top:2px; color:#8e70ff;'>✦</span>$1</div>"
+            "<div style='margin-bottom:12px; padding-left:28px; position:relative; color:var(--text-sub); font-size:1.1rem; line-height:1.6;'><span style='position:absolute; left:0; top:2px; color:var(--accent-color);'>✦</span>$1</div>"
           )
       );
     };
@@ -75,6 +75,10 @@ class Projects extends Component {
                       style={{
                         ...styles.toggleIcon,
                         transform: isActive ? "rotate(45deg)" : "rotate(0deg)",
+                        background: isActive
+                          ? "var(--accent-color)"
+                          : "var(--bg-color)",
+                        color: isActive ? "#fff" : "var(--accent-color)",
                       }}
                     >
                       <span style={{ fontSize: "2rem" }}>+</span>
@@ -155,15 +159,16 @@ class Projects extends Component {
 const styles = {
   section: {
     padding: "140px 0",
-    backgroundColor: "#ffffff",
-    backgroundImage: "radial-gradient(#e5e7eb 1px, transparent 1px)",
+    backgroundColor: "var(--bg-color)",
+    backgroundImage: "radial-gradient(var(--bg-dot) 1px, transparent 1px)",
     backgroundSize: "40px 40px",
     minHeight: "100vh",
+    transition: "all 0.3s ease",
   },
   container: { maxWidth: "1000px", margin: "0 auto", padding: "0 24px" },
   headerArea: { textAlign: "left", marginBottom: "80px" },
   subTitle: {
-    color: "#8e70ff",
+    color: "var(--accent-color)",
     fontWeight: 800,
     fontSize: "0.9rem",
     textTransform: "uppercase",
@@ -172,26 +177,27 @@ const styles = {
   mainTitle: {
     fontSize: "4rem",
     fontWeight: 900,
-    color: "#0f172a",
+    color: "var(--text-main)",
     margin: "10px 0",
     letterSpacing: "-0.04em",
   },
 
   item: {
-    backgroundColor: "#f8fafc",
+    backgroundColor: "var(--bg-dot)",
     borderRadius: "24px",
     marginBottom: "16px",
-    border: "1px solid #f1f5f9",
+    border: "1px solid var(--card-border)",
     cursor: "pointer",
     transition: "all 0.4s cubic-bezier(0.23, 1, 0.32, 1)",
     overflow: "hidden",
   },
   activeItem: {
-    backgroundColor: "#ffffff",
+    backgroundColor: "var(--card-bg)",
+    backdropFilter: "blur(10px)",
     borderRadius: "32px",
     marginBottom: "32px",
-    border: "1px solid #e2e8f0",
-    boxShadow: "0 40px 80px -20px rgba(0,0,0,0.08)",
+    border: "1px solid var(--accent-color)",
+    boxShadow: "0 40px 80px -20px rgba(0,0,0,0.2)",
     cursor: "default",
     overflow: "hidden",
     transition: "all 0.4s cubic-bezier(0.23, 1, 0.32, 1)",
@@ -204,7 +210,7 @@ const styles = {
   },
   projectYear: {
     fontSize: "0.9rem",
-    color: "#94a3b8",
+    color: "var(--text-sub)",
     fontWeight: 600,
     display: "block",
     marginBottom: "4px",
@@ -212,7 +218,7 @@ const styles = {
   projectTitle: {
     fontSize: "1.8rem",
     fontWeight: 800,
-    color: "#1e293b",
+    color: "var(--text-main)",
     margin: 0,
     letterSpacing: "-0.02em",
   },
@@ -223,9 +229,7 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     borderRadius: "50%",
-    background: "#fff",
-    border: "1px solid #e2e8f0",
-    color: "#8e70ff",
+    border: "1px solid var(--card-border)",
     transition: "0.5s",
   },
 
@@ -235,25 +239,25 @@ const styles = {
   imageContainer: {
     borderRadius: "20px",
     overflow: "hidden",
-    background: "#f8fafc",
+    background: "var(--bg-dot)",
     padding: "20px",
     marginBottom: "40px",
   },
   image: {
     width: "100%",
     borderRadius: "12px",
-    boxShadow: "0 20px 40px rgba(0,0,0,0.05)",
+    boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
   },
 
   techStack: {
     marginTop: "60px",
-    borderTop: "1px solid #f1f5f9",
+    borderTop: "1px solid var(--card-border)",
     paddingTop: "40px",
   },
   techLabel: {
     fontSize: "0.85rem",
     fontWeight: 800,
-    color: "#94a3b8",
+    color: "var(--text-sub)",
     textTransform: "uppercase",
     marginBottom: "20px",
     letterSpacing: "0.1em",
@@ -261,20 +265,21 @@ const styles = {
   techGrid: { display: "flex", flexWrap: "wrap", gap: "10px" },
   techBadge: {
     padding: "8px 16px",
-    background: "#f1f5f9",
+    background: "var(--bg-dot)",
     borderRadius: "100px",
     fontSize: "0.95rem",
     fontWeight: 600,
-    color: "#475569",
+    color: "var(--text-main)",
     display: "flex",
     alignItems: "center",
     gap: "8px",
+    border: "1px solid var(--card-border)",
   },
 
   buttonGroup: { display: "flex", gap: "12px", marginTop: "50px" },
   primaryBtn: {
     padding: "16px 32px",
-    background: "#0f172a",
+    background: "var(--accent-color)",
     color: "#fff",
     borderRadius: "14px",
     textDecoration: "none",
@@ -283,12 +288,12 @@ const styles = {
   },
   secondaryBtn: {
     padding: "16px 32px",
-    background: "#fff",
-    color: "#0f172a",
+    background: "transparent",
+    color: "var(--text-main)",
     borderRadius: "14px",
     textDecoration: "none",
     fontWeight: 700,
-    border: "1px solid #e2e8f0",
+    border: "1px solid var(--card-border)",
     transition: "0.3s",
   },
 };
