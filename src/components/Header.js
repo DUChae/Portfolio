@@ -109,11 +109,12 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#ffffff",
-    backgroundImage: "radial-gradient(#e5e7eb 1px, transparent 1px)", // 도트 패턴 유지
+    backgroundColor: "var(--bg-color)", // 👈 수정: #ffffff -> var(--bg-color)
+    backgroundImage: "radial-gradient(var(--bg-dot) 1px, transparent 1px)", // 👈 수정: var(--bg-dot)
     backgroundSize: "40px 40px",
     position: "relative",
     overflow: "hidden",
+    transition: "all 0.3s ease", // 테마 전환 시 부드럽게
   },
   container: {
     maxWidth: "1100px",
@@ -122,10 +123,10 @@ const styles = {
     textAlign: "center",
   },
   contentBox: {
-    animation: "fadeInUp 1s ease-out", // CSS에 추가 권장
+    animation: "fadeInUp 1s ease-out",
   },
   subTitle: {
-    color: "#8e70ff",
+    color: "var(--accent-color)", // 👈 수정: #8e70ff -> var(--accent-color)
     fontWeight: 800,
     fontSize: "1rem",
     textTransform: "uppercase",
@@ -134,22 +135,22 @@ const styles = {
     marginBottom: "20px",
   },
   nameText: {
-    fontSize: "6rem", // 압도적인 크기
+    fontSize: "6rem",
     fontWeight: 900,
-    color: "#0f172a",
+    color: "var(--text-main)", // 👈 수정: #0f172a -> var(--text-main)
     letterSpacing: "-0.05em",
     margin: "0 0 10px 0",
     lineHeight: 1.1,
   },
   cursor: {
-    color: "#8e70ff",
+    color: "var(--accent-color)", // 👈 수정: var(--accent-color)
     animation: "blink 1s infinite",
   },
   titleContainer: {
     fontSize: "1.8rem",
     fontWeight: 500,
-    color: "#64748b",
-    height: "2.5rem", // 타이핑 시 레이아웃 흔들림 방지
+    color: "var(--text-sub)", // 👈 수정: #64748b -> var(--text-sub)
+    height: "2.5rem",
     marginBottom: "50px",
   },
   switchWrapper: {
@@ -162,7 +163,7 @@ const styles = {
   switchLabel: {
     fontSize: "0.85rem",
     fontWeight: 700,
-    color: "#94a3b8",
+    color: "var(--text-sub)", // 👈 수정: #94a3b8 -> var(--text-sub)
     textTransform: "uppercase",
     letterSpacing: "0.1em",
   },
@@ -174,8 +175,6 @@ const styles = {
     fontSize: "18px",
     color: "white",
   },
-
-  // 스크롤 가이드 디자인
   scrollIndicator: {
     position: "absolute",
     bottom: "40px",
@@ -189,18 +188,16 @@ const styles = {
   mouseWheel: {
     width: "24px",
     height: "40px",
-    border: "2px solid #e2e8f0",
+    border: "2px solid var(--card-border)", // 👈 수정: var(--card-border)
     borderRadius: "12px",
     position: "relative",
-    // 내부 휠 애니메이션은 CSS 추가 필요
   },
   scrollText: {
     fontSize: "0.75rem",
     fontWeight: 700,
-    color: "#cbd5e1",
+    color: "var(--text-sub)", // 👈 수정: var(--text-sub)
     textTransform: "uppercase",
     letterSpacing: "0.2em",
   },
 };
-
 export default Header;
