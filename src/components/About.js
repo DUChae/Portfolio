@@ -130,15 +130,16 @@ class About extends Component {
 const styles = {
   section: {
     padding: "140px 0",
-    backgroundColor: "#ffffff",
-    backgroundImage: "radial-gradient(#e5e7eb 1px, transparent 1px)", // Projects와 동일한 도트 패턴
+    backgroundColor: "var(--bg-color)", // #ffffff -> 변수 교체
+    backgroundImage: "radial-gradient(var(--bg-dot) 1px, transparent 1px)", // #e5e7eb -> 변수 교체
     backgroundSize: "40px 40px",
     minHeight: "100vh",
+    transition: "all 0.3s ease",
   },
   container: { maxWidth: "1100px", margin: "0 auto", padding: "0 24px" },
   headerArea: { textAlign: "left", marginBottom: "80px" },
   subTitle: {
-    color: "#8e70ff",
+    color: "var(--accent-color)", // #8e70ff -> 변수 교체
     fontWeight: 800,
     fontSize: "0.9rem",
     textTransform: "uppercase",
@@ -147,7 +148,7 @@ const styles = {
   mainTitle: {
     fontSize: "4rem",
     fontWeight: 900,
-    color: "#0f172a",
+    color: "var(--text-main)", // #0f172a -> 변수 교체
     margin: "10px 0",
     letterSpacing: "-0.04em",
   },
@@ -162,11 +163,12 @@ const styles = {
   // 왼쪽 프로필 스타일
   profileColumn: { flex: "1", minWidth: "300px" },
   profileCard: {
-    backgroundColor: "#fff",
+    backgroundColor: "var(--card-bg)", // #fff -> 변수 교체
     borderRadius: "32px",
     padding: "24px",
-    border: "1px solid #f1f5f9",
-    boxShadow: "0 30px 60px -12px rgba(0,0,0,0.08)",
+    border: "1px solid var(--card-border)", // #f1f5f9 -> 변수 교체
+    boxShadow: "0 30px 60px -12px rgba(0,0,0,0.1)",
+    backdropFilter: "blur(10px)",
   },
   imageWrapper: {
     width: "100%",
@@ -179,7 +181,7 @@ const styles = {
   techLabel: {
     fontSize: "0.75rem",
     fontWeight: 800,
-    color: "#94a3b8",
+    color: "var(--text-sub)", // #94a3b8 -> 변수 교체
     textTransform: "uppercase",
     letterSpacing: "0.1em",
     marginBottom: "16px",
@@ -188,35 +190,39 @@ const styles = {
   techIcon: { fontSize: "2.5rem" },
 
   // 오른쪽 정보 카드 스타일
-  detailsColumn: { flex: "2.5", minWidth: "450px" },
+  detailsColumn: { flex: "2.5", minWidth: "500px" },
   infoCard: {
-    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    backgroundColor: "var(--card-bg)", // rgba(255, 255, 255, 0.7) -> 변수 교체
     backdropFilter: "blur(10px)",
     borderRadius: "32px",
-    border: "1px solid #f1f5f9",
+    border: "1px solid var(--card-border)", // #f1f5f9 -> 변수 교체
     padding: "60px",
   },
   helloText: {
     fontSize: "3.5rem",
     fontWeight: 900,
-    color: "#0f172a",
+    color: "var(--text-main)", // #0f172a -> 변수 교체
     marginBottom: "30px",
     letterSpacing: "-0.04em",
   },
-  accentDot: { color: "#8e70ff" },
+  accentDot: { color: "var(--accent-color)" }, // #8e70ff -> 변수 교체
   summaryText: {
-    fontSize: "1.25rem",
-    color: "#475569",
+    fontSize: "1.7rem",
+    color: "var(--text-sub)", // #475569 -> 변수 교체
     lineHeight: "1.7",
     marginBottom: "40px",
   },
-  divider: { height: "1px", backgroundColor: "#f1f5f9", margin: "40px 0" },
+  divider: {
+    height: "1px",
+    backgroundColor: "var(--card-border)",
+    margin: "40px 0",
+  },
 
   infoSection: { marginBottom: "50px" },
   sectionCaption: {
-    fontSize: "0.85rem",
+    fontSize: "1.7rem",
     fontWeight: 800,
-    color: "#8e70ff",
+    color: "var(--accent-color)", // #8e70ff -> 변수 교체
     textTransform: "uppercase",
     letterSpacing: "0.1em",
     marginBottom: "20px",
@@ -226,30 +232,22 @@ const styles = {
   },
   infoList: { listStyle: "none", padding: 0 },
   infoItem: {
-    fontSize: "1.15rem",
-    color: "#1e293b",
+    fontSize: "1.7rem",
+    color: "var(--text-main)", // #1e293b -> 변수 교체
     marginBottom: "16px",
     paddingLeft: "24px",
     position: "relative",
     lineHeight: "1.6",
   },
-  // 프로젝트 섹션과 통일된 불렛 포인트
-  infoItemBefore: {
-    // CSS 파일이 있다면 추가 권장, 인라인으로는 ✦ 사용
-    content: "'✦'",
-    position: "absolute",
-    left: 0,
-    color: "#8e70ff",
-  },
 
   conclusionBox: {
     marginTop: "60px",
     padding: "40px",
-    backgroundColor: "#f8fafc",
+    backgroundColor: "var(--bg-dot)", // #f8fafc -> 변수(배경보다 살짝 밝은/어두운 톤) 교체
     borderRadius: "24px",
     position: "relative",
-    fontSize: "1.2rem",
-    color: "#475569",
+    fontSize: "1.6rem",
+    color: "var(--text-sub)", // #475569 -> 변수 교체
     lineHeight: "1.8",
     fontWeight: "500",
   },
@@ -258,8 +256,9 @@ const styles = {
     top: "-10px",
     left: "20px",
     fontSize: "4rem",
-    color: "#e2e8f0",
+    color: "var(--card-border)",
     fontFamily: "serif",
+    opacity: 0.5,
   },
 };
 
