@@ -85,10 +85,11 @@ class Experience extends Component {
 const styles = {
   section: {
     padding: "140px 0",
-    backgroundColor: "#ffffff",
-    backgroundImage: "radial-gradient(#e5e7eb 1px, transparent 1px)", // 통일된 도트 패턴
+    backgroundColor: "var(--bg-color)", // 수정
+    backgroundImage: "radial-gradient(var(--bg-dot) 1px, transparent 1px)", // 수정
     backgroundSize: "40px 40px",
     minHeight: "100vh",
+    transition: "all 0.3s ease",
   },
   container: {
     maxWidth: "1100px",
@@ -100,16 +101,16 @@ const styles = {
     marginBottom: "80px",
   },
   subTitle: {
-    color: "#8e70ff",
+    color: "var(--accent-color)", // 수정
     fontWeight: 800,
-    fontSize: "0.9rem",
+    fontSize: "1.7rem",
     textTransform: "uppercase",
     letterSpacing: "0.2em",
   },
   mainTitle: {
     fontSize: "4rem",
     fontWeight: 900,
-    color: "#0f172a",
+    color: "var(--text-main)", // 수정
     margin: "10px 0",
     letterSpacing: "-0.04em",
   },
@@ -120,30 +121,30 @@ const styles = {
 
   // 타임라인 카드 스타일
   contentStyle: {
-    background: "rgba(255, 255, 255, 0.7)",
+    background: "var(--card-bg)", // 수정
     backdropFilter: "blur(10px)",
     borderRadius: "24px",
-    border: "1px solid #f1f5f9",
+    border: "1px solid var(--card-border)", // 수정
     boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.05)",
     textAlign: "left",
     padding: "40px",
   },
   contentArrowStyle: {
-    borderRight: "7px solid #f1f5f9",
+    borderRight: "7px solid var(--card-border)", // 수정
   },
 
   // 아이콘 스타일
   iconStyle: {
-    background: "#8e70ff",
+    background: "var(--accent-color)", // 수정
     color: "#fff",
     boxShadow:
-      "0 0 0 4px #fff, inset 0 2px 0 rgba(0,0,0,0.08), 0 3px 0 4px rgba(0,0,0,0.05)",
+      "0 0 0 4px var(--bg-color), inset 0 2px 0 rgba(0,0,0,0.08), 0 3px 0 4px rgba(0,0,0,0.05)", // 테두리 색상도 배경색 변수로
   },
   endIconStyle: {
-    background: "#f1f5f9",
-    color: "#94a3b8",
+    background: "var(--card-border)", // 수정
+    color: "var(--text-sub)", // 수정
     boxShadow:
-      "0 0 0 4px #fff, inset 0 2px 0 rgba(0,0,0,0.08), 0 3px 0 4px rgba(0,0,0,0.05)",
+      "0 0 0 4px var(--bg-color), inset 0 2px 0 rgba(0,0,0,0.08), 0 3px 0 4px rgba(0,0,0,0.05)",
   },
   briefcaseIcon: {
     fontSize: "1.2rem",
@@ -152,46 +153,44 @@ const styles = {
 
   // 텍스트 스타일
   dateText: {
-    fontSize: "1.1rem",
+    fontSize: "1.5rem",
     fontWeight: "700",
-    color: "#64748b",
-    opacity: 1,
+    color: "var(--text-sub)", // 수정
   },
   workTitle: {
     fontSize: "1.8rem",
     fontWeight: "800",
-    color: "#1e293b",
+    color: "var(--text-main)", // 수정
     letterSpacing: "-0.02em",
     margin: "10px 0 5px 0",
   },
   workCompany: {
-    fontSize: "1.2rem",
+    fontSize: "1.7rem",
     fontWeight: "600",
-    color: "#8e70ff",
+    color: "var(--accent-color)", // 수정
     margin: 0,
   },
 
   // 뱃지 스타일
   mainBadge: {
-    backgroundColor: "#8e70ff",
+    backgroundColor: "var(--accent-color)", // 수정
     color: "#fff",
     padding: "8px 16px",
-    fontSize: "0.85rem",
+    fontSize: "1.2rem",
     fontWeight: "700",
     marginRight: "8px",
     marginBottom: "8px",
     border: "none",
   },
   techBadge: {
-    backgroundColor: "#f1f5f9",
-    color: "#475569",
+    backgroundColor: "var(--bg-dot)", // 수정
+    color: "var(--text-sub)", // 수정
     padding: "6px 14px",
-    fontSize: "0.8rem",
+    fontSize: "1.2rem",
     fontWeight: "600",
     marginRight: "6px",
     marginBottom: "6px",
-    border: "1px solid #e2e8f0",
+    border: "1px solid var(--card-border)", // 수정
   },
 };
-
 export default Experience;
