@@ -3,9 +3,7 @@ import React, { Component } from "react";
 class Projects extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      activeIndex: null,
-    };
+    this.state = { activeIndex: null };
   }
 
   toggleProject = (index) => {
@@ -17,111 +15,136 @@ class Projects extends Component {
   render() {
     const { resumeProjects, resumeBasicInfo } = this.props;
 
-    if (!resumeBasicInfo || !resumeProjects || resumeProjects.length === 0) {
+    const applyStyles = (text) => {
+      if (!text) return "";
       return (
-        <div className="col-md-12 text-center" style={{ padding: "100px 0" }}>
-          <p style={{ fontSize: "1.5rem", color: "#888" }}>
-            프로젝트를 불러오는 중입니다...
-          </p>
-        </div>
+        text
+          .replace(/\n/g, "<br/>")
+          .replace(
+            /\*\*(.*?)\*\*/g,
+            "<strong style='color:#0f172a; font-weight:700;'>$1</strong>"
+          )
+          // 섹션 헤더 디자인 (Linear 스타일)
+          .replace(
+            /### (.*?)(<br\/>|$)/g,
+            "<div style='margin-top:45px; margin-bottom:20px;'><span style='font-size:0.85rem; font-weight:800; color:#8e70ff; text-transform:uppercase; letter-spacing:0.1em; display:block; margin-bottom:8px;'>Section</span><h4 style='font-weight:800; color:#1e293b; font-size:1.6rem; letter-spacing:-0.03em; margin:0;'>$1</h4></div>"
+          )
+          // Key Insights 강조 (카드 스타일)
+          .replace(
+            /### Key Insights/g,
+            "<div style='margin-top:45px; margin-bottom:20px; padding:20px; background:#fff7ed; border-radius:16px; border-left:4px solid #f59e0b;'><span style='font-size:0.85rem; font-weight:800; color:#d97706; text-transform:uppercase; letter-spacing:0.1em; display:block; margin-bottom:4px;'>Valuable Discovery</span><h4 style='font-weight:800; color:#9a3412; font-size:1.6rem; letter-spacing:-0.03em; margin:0;'>Key Insights</h4></div>"
+          )
+          // 리스트 아이템 (체크 아이콘 스타일)
+          .replace(
+            /- (.*?)(<br\/>|$)/g,
+            "<div style='margin-bottom:12px; padding-left:28px; position:relative; color:#475569; font-size:1.1rem; line-height:1.6;'><span style='position:absolute; left:0; top:2px; color:#8e70ff;'>✦</span>$1</div>"
+          )
       );
-    }
+    };
+
+    if (!resumeBasicInfo || !resumeProjects || resumeProjects.length === 0)
+      return null;
 
     const sectionName = resumeBasicInfo.section_name.projects;
 
-    const projects = resumeProjects.map((project, index) => {
-      const isActive = this.state.activeIndex === index;
-      const hasImage = project.images && project.images.length > 0;
-
-      return (
-        <div
-          className="project-item"
-          key={project.title}
-          style={isActive ? styles.activeItem : styles.item}
-        >
-          {/* 헤더 부분: 클릭 시 열림/닫힘 */}
-          <div
-            className="project-header"
-            onClick={() => this.toggleProject(index)}
-            style={styles.header}
-          >
-            <h3 style={styles.title}>
-              {project.title}
-              <span style={styles.toggleIcon}>{isActive ? "−" : "+"}</span>
-            </h3>
-          </div>
-
-          {/* 확장 내용: 애니메이션 느낌을 위해 조건부 렌더링 */}
-          {isActive && (
-            <div className="project-content" style={styles.content}>
-              {/* 1. 프로젝트 이미지 (스크린샷처럼 중앙 배치) */}
-              {hasImage && (
-                <div style={styles.imageWrapper}>
-                  <img
-                    src={project.images[0]}
-                    alt={project.title}
-                    style={styles.image}
-                    onError={(e) => (e.target.src = "/images/placeholder.jpg")}
-                  />
-                </div>
-              )}
-
-              {/* 2. 프로젝트 상세 설명 */}
-              <div style={styles.details}>
-                <p style={styles.description}>{project.description}</p>
-
-                {/* 3. 기술 스택 (아이콘 + 이름) */}
-                <div style={styles.techSection}>
-                  <h4 style={styles.techTitle}>Technologies:</h4>
-                  <ul style={styles.techList}>
-                    {project.technologies.map((tech, i) => (
-                      <li key={i} style={styles.techItem}>
-                        <i className={tech.class} style={styles.techIcon}></i>
-                        <span style={styles.techName}>{tech.name}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* 4. 링크 버튼 (보라색 포인트) */}
-                <div style={styles.linkSection}>
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-github"
-                    style={styles.githubBtn}
-                  >
-                    GitHub
-                  </a>
-                  {project.live && (
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={styles.liveBtn}
-                    >
-                      Live Demo
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      );
-    });
-
     return (
       <section id="portfolio" style={styles.section}>
-        <div className="container">
-          <div className="col-md-12">
-            <h1 className="section-title" style={styles.mainTitle}>
-              <span>{sectionName}</span>
-            </h1>
-            <div className="projects-container" style={styles.listContainer}>
-              {projects}
-            </div>
+        <div style={styles.container}>
+          <div style={styles.headerArea}>
+            <span style={styles.subTitle}>Selected Works</span>
+            <h1 style={styles.mainTitle}>{sectionName}</h1>
+          </div>
+
+          <div style={styles.listContainer}>
+            {resumeProjects.map((project, index) => {
+              const isActive = this.state.activeIndex === index;
+              return (
+                <div
+                  key={project.title}
+                  style={isActive ? styles.activeItem : styles.item}
+                  onClick={() => this.toggleProject(index)}
+                >
+                  <div style={styles.cardHeader}>
+                    <div style={styles.titleGroup}>
+                      <span style={styles.projectYear}>
+                        {project.startDate}
+                      </span>
+                      <h3 style={styles.projectTitle}>{project.title}</h3>
+                    </div>
+                    <div
+                      style={{
+                        ...styles.toggleIcon,
+                        transform: isActive ? "rotate(45deg)" : "rotate(0deg)",
+                      }}
+                    >
+                      <span style={{ fontSize: "2rem" }}>+</span>
+                    </div>
+                  </div>
+
+                  <div
+                    style={{
+                      ...styles.contentWrapper,
+                      maxHeight: isActive ? "3000px" : "0",
+                      opacity: isActive ? 1 : 0,
+                    }}
+                  >
+                    <div
+                      style={styles.innerContent}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {project.images && project.images[0] && (
+                        <div style={styles.imageContainer}>
+                          <img
+                            src={project.images[0]}
+                            alt={project.title}
+                            style={styles.image}
+                          />
+                        </div>
+                      )}
+
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: applyStyles(project.description),
+                        }}
+                      />
+
+                      <div style={styles.techStack}>
+                        <p style={styles.techLabel}>Built with</p>
+                        <div style={styles.techGrid}>
+                          {project.technologies.map((tech, i) => (
+                            <div key={i} style={styles.techBadge}>
+                              <i className={tech.class}></i>
+                              <span>{tech.name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div style={styles.buttonGroup}>
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={styles.primaryBtn}
+                        >
+                          View Repository
+                        </a>
+                        {project.live && (
+                          <a
+                            href={project.live}
+                            target="_blank"
+                            rel="noreferrer"
+                            style={styles.secondaryBtn}
+                          >
+                            Live Demo
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -129,132 +152,144 @@ class Projects extends Component {
   }
 }
 
-// --- 세련된 스타일 정의 ---
 const styles = {
-  // 1. 전체 섹션 배경: 스크린샷과 유사한 따뜻한 베이지/샌드 톤
   section: {
-    padding: "100px 0",
-    backgroundColor: "#E9D5A1", // 따뜻한 에그쉘/베이지 색상
+    padding: "140px 0",
+    backgroundColor: "#ffffff",
+    backgroundImage: "radial-gradient(#e5e7eb 1px, transparent 1px)",
+    backgroundSize: "40px 40px",
     minHeight: "100vh",
   },
-
+  container: { maxWidth: "1000px", margin: "0 auto", padding: "0 24px" },
+  headerArea: { textAlign: "left", marginBottom: "80px" },
+  subTitle: {
+    color: "#8e70ff",
+    fontWeight: 800,
+    fontSize: "0.9rem",
+    textTransform: "uppercase",
+    letterSpacing: "0.2em",
+  },
   mainTitle: {
-    textAlign: "center",
-    marginBottom: "60px",
-    fontWeight: "800",
-    color: "#333",
-    fontSize: "2.5rem",
+    fontSize: "4rem",
+    fontWeight: 900,
+    color: "#0f172a",
+    margin: "10px 0",
+    letterSpacing: "-0.04em",
   },
 
-  listContainer: { maxWidth: "1100px", margin: "0 auto", padding: "0 20px" },
-
-  // 2. 닫혀있는 프로젝트 바: 반투명한 흰색을 써서 배경과 조화롭게
   item: {
-    marginBottom: "18px",
-    backgroundColor: "rgba(255, 255, 255, 0.8)", // 살짝 투명한 화이트
-    borderRadius: "12px",
-    overflow: "hidden",
-    transition: "transform 0.2s ease, background-color 0.2s ease",
-    border: "1px solid rgba(0,0,0,0.03)",
-  },
-
-  // 3. 열려있는 프로젝트 카드: 완전한 흰색으로 강조
-  activeItem: {
-    marginBottom: "30px",
-    backgroundColor: "#ffffff",
-    borderRadius: "15px",
-    boxShadow: "0 20px 40px rgba(0,0,0,0.08)",
-    border: "1px solid #e0d9c5", // 배경색보다 살짝 진한 테두리
-    transform: "scale(1.02)", // 열릴 때 살짝 커지는 효과
-    transition: "all 0.3s ease",
-  },
-
-  header: {
-    padding: "25px 35px",
+    backgroundColor: "#f8fafc",
+    borderRadius: "24px",
+    marginBottom: "16px",
+    border: "1px solid #f1f5f9",
     cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
+    transition: "all 0.4s cubic-bezier(0.23, 1, 0.32, 1)",
+    overflow: "hidden",
   },
-
-  title: {
-    fontSize: "1.6rem", // 폰트 크기 상향
-    fontWeight: "700",
-    margin: 0,
+  activeItem: {
+    backgroundColor: "#ffffff",
+    borderRadius: "32px",
+    marginBottom: "32px",
+    border: "1px solid #e2e8f0",
+    boxShadow: "0 40px 80px -20px rgba(0,0,0,0.08)",
+    cursor: "default",
+    overflow: "hidden",
+    transition: "all 0.4s cubic-bezier(0.23, 1, 0.32, 1)",
+  },
+  cardHeader: {
+    padding: "32px 40px",
     display: "flex",
-    width: "100%",
     justifyContent: "space-between",
-    color: "#2c2c2c",
+    alignItems: "center",
   },
-
-  toggleIcon: {
-    color: "#ae944f",
+  projectYear: {
+    fontSize: "0.9rem",
+    color: "#94a3b8",
+    fontWeight: 600,
+    display: "block",
+    marginBottom: "4px",
+  },
+  projectTitle: {
     fontSize: "1.8rem",
-    fontWeight: "300",
+    fontWeight: 800,
+    color: "#1e293b",
+    margin: 0,
+    letterSpacing: "-0.02em",
   },
-
-  // 컨텐츠 내부 상세 스타일
-  content: {
-    padding: "50px",
-    borderTop: "1px solid #f1f1f1",
-    animation: "fadeIn 0.5s ease", // 페이드인 효과 (CSS 파일에 정의 필요)
-  },
-
-  imageWrapper: {
-    width: "100%",
-    textAlign: "center",
-    backgroundColor: "#fff",
-    borderRadius: "12px",
-    padding: "15px",
-    marginBottom: "40px",
-    boxShadow: "inset 0 0 10px rgba(0,0,0,0.02)",
-  },
-
-  image: {
-    maxWidth: "100%",
-    maxHeight: "600px",
-    borderRadius: "8px",
-    objectFit: "contain",
-  },
-
-  description: {
-    fontSize: "1.4rem", // About 섹션과 맞춘 큰 폰트
-    lineHeight: "1.9",
-    color: "#444",
-    marginBottom: "40px",
-    wordBreak: "keep-all", // 한글 줄바꿈 예쁘게
-  },
-
-  // 기술 스택 & 버튼 (이전과 동일하되 폰트만 키움)
-  techTitle: {
-    fontSize: "1.2rem",
-    fontWeight: "700",
-    color: "#999",
-    marginBottom: "20px",
-  },
-  techList: {
-    listStyle: "none",
-    padding: 0,
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "25px",
-  },
-  techItem: {
+  toggleIcon: {
+    width: "48px",
+    height: "48px",
     display: "flex",
     alignItems: "center",
-    gap: "10px",
-    fontSize: "1.2rem",
+    justifyContent: "center",
+    borderRadius: "50%",
+    background: "#fff",
+    border: "1px solid #e2e8f0",
+    color: "#8e70ff",
+    transition: "0.5s",
   },
 
-  linkSection: { display: "flex", gap: "20px", marginTop: "50px" },
-  githubBtn: {
-    padding: "15px 35px",
-    backgroundColor: "#8e70ff", // 보라색 포인트
+  contentWrapper: { transition: "all 0.5s ease-in-out", overflow: "hidden" },
+  innerContent: { padding: "0 40px 48px 40px" },
+
+  imageContainer: {
+    borderRadius: "20px",
+    overflow: "hidden",
+    background: "#f8fafc",
+    padding: "20px",
+    marginBottom: "40px",
+  },
+  image: {
+    width: "100%",
+    borderRadius: "12px",
+    boxShadow: "0 20px 40px rgba(0,0,0,0.05)",
+  },
+
+  techStack: {
+    marginTop: "60px",
+    borderTop: "1px solid #f1f5f9",
+    paddingTop: "40px",
+  },
+  techLabel: {
+    fontSize: "0.85rem",
+    fontWeight: 800,
+    color: "#94a3b8",
+    textTransform: "uppercase",
+    marginBottom: "20px",
+    letterSpacing: "0.1em",
+  },
+  techGrid: { display: "flex", flexWrap: "wrap", gap: "10px" },
+  techBadge: {
+    padding: "8px 16px",
+    background: "#f1f5f9",
+    borderRadius: "100px",
+    fontSize: "0.95rem",
+    fontWeight: 600,
+    color: "#475569",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+  },
+
+  buttonGroup: { display: "flex", gap: "12px", marginTop: "50px" },
+  primaryBtn: {
+    padding: "16px 32px",
+    background: "#0f172a",
     color: "#fff",
-    borderRadius: "10px",
+    borderRadius: "14px",
     textDecoration: "none",
-    fontWeight: "700",
-    fontSize: "1.2rem",
-    boxShadow: "0 4px 14px rgba(142, 112, 255, 0.3)",
+    fontWeight: 700,
+    transition: "0.3s",
+  },
+  secondaryBtn: {
+    padding: "16px 32px",
+    background: "#fff",
+    color: "#0f172a",
+    borderRadius: "14px",
+    textDecoration: "none",
+    fontWeight: 700,
+    border: "1px solid #e2e8f0",
+    transition: "0.3s",
   },
 };
 
