@@ -16,29 +16,37 @@ class About extends Component {
       if (!text) return "";
       return text
         .replace(/\n/g, "<br/>")
-        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+        .replace(
+          /\*\*(.*?)\*\*/g,
+          "<strong style='color:#0f172a;'>$1</strong>"
+        );
     };
 
     return (
       <section id="about" style={styles.section}>
-        <div className="container">
-          <h1 className="section-title" style={styles.mainTitle}>
-            <span>
-              {resumeBasicInfo.basic_info?.section_name?.about || "소개"}
-            </span>
-          </h1>
+        <div style={styles.container}>
+          {/* 상단 캡션 레이아웃 */}
+          <div style={styles.headerArea}>
+            <span style={styles.subTitle}>Introduction</span>
+            <h1 style={styles.mainTitle}>
+              {resumeBasicInfo.basic_info?.section_name?.about || "About Me"}
+            </h1>
+          </div>
 
-          <div className="row align-items-start mt-5">
-            {/* 왼쪽: 프로필 섹션 (완벽 중앙 정렬) */}
-            <div className="col-md-3 mb-5 d-flex flex-column align-items-center justify-content-center">
-              <div style={styles.profileWrapper}>
-                <div className="polaroid" style={styles.polaroidCustom}>
+          <div style={styles.contentGrid}>
+            {/* 왼쪽: 프로필 카드 (Floating 스타일) */}
+            <div style={styles.profileColumn}>
+              <div style={styles.profileCard}>
+                <div style={styles.imageWrapper}>
                   <img
                     src={profilepic}
                     alt="Profile"
                     style={styles.profileImg}
                   />
-                  <div style={styles.iconContainer}>
+                </div>
+                <div style={styles.techStack}>
+                  <p style={styles.techLabel}>Main Stack</p>
+                  <div style={styles.iconRow}>
                     <span
                       className="iconify"
                       data-icon="skill-icons:javascript"
@@ -59,30 +67,13 @@ class About extends Component {
               </div>
             </div>
 
-            {/* 오른쪽: 상세 설명 카드 (폰트 크기 대폭 상향) */}
-            <div className="col-md-9">
-              <div className="card" style={styles.aboutCard}>
-                <div className="card-header" style={styles.cardHeader}>
-                  <span
-                    className="iconify"
-                    data-icon="emojione:red-circle"
-                    style={styles.dot}
-                  ></span>
-                  <span
-                    className="iconify"
-                    data-icon="twemoji:yellow-circle"
-                    style={styles.dot}
-                  ></span>
-                  <span
-                    className="iconify"
-                    data-icon="twemoji:green-circle"
-                    style={styles.dot}
-                  ></span>
-                </div>
-
-                <div className="card-body" style={styles.cardBody}>
+            {/* 오른쪽: 상세 정보 (Bento 스타일의 깔끔한 카드) */}
+            <div style={styles.detailsColumn}>
+              <div style={styles.infoCard}>
+                <div style={styles.cardContent}>
                   <h2 style={styles.helloText}>
-                    {resumeBasicInfo.basic_info?.description_header} :)
+                    {resumeBasicInfo.basic_info?.description_header}
+                    <span style={styles.accentDot}>.</span>
                   </h2>
 
                   {summary && (
@@ -99,7 +90,9 @@ class About extends Component {
 
                   {sections.map((section, index) => (
                     <div key={index} style={styles.infoSection}>
-                      <h3 style={styles.infoTitle}>{section.title}</h3>
+                      <div style={styles.sectionCaption}>
+                        0{index + 1} / {section.title}
+                      </div>
                       <ul style={styles.infoList}>
                         {section.details.map((detail, i) => (
                           <li key={i} style={styles.infoItem}>
@@ -116,6 +109,7 @@ class About extends Component {
 
                   {conclusion && (
                     <div style={styles.conclusionBox}>
+                      <span style={styles.quoteIcon}>“</span>
                       <p
                         dangerouslySetInnerHTML={{
                           __html: applyStyles(conclusion),
@@ -134,100 +128,138 @@ class About extends Component {
 }
 
 const styles = {
-  section: { padding: "100px 0", backgroundColor: "#fcfcfc" },
+  section: {
+    padding: "140px 0",
+    backgroundColor: "#ffffff",
+    backgroundImage: "radial-gradient(#e5e7eb 1px, transparent 1px)", // Projects와 동일한 도트 패턴
+    backgroundSize: "40px 40px",
+    minHeight: "100vh",
+  },
+  container: { maxWidth: "1100px", margin: "0 auto", padding: "0 24px" },
+  headerArea: { textAlign: "left", marginBottom: "80px" },
+  subTitle: {
+    color: "#8e70ff",
+    fontWeight: 800,
+    fontSize: "0.9rem",
+    textTransform: "uppercase",
+    letterSpacing: "0.2em",
+  },
   mainTitle: {
-    textAlign: "center",
-    marginBottom: "60px",
-    fontWeight: "800",
-    fontSize: "2.5rem",
+    fontSize: "4rem",
+    fontWeight: 900,
+    color: "#0f172a",
+    margin: "10px 0",
+    letterSpacing: "-0.04em",
   },
 
-  // 프로필 영역 (왼쪽으로 더 밀기)
-  profileWrapper: {
-    width: "100%",
-    maxWidth: "320px",
-    position: "relative", // 상대 위치 설정
-    left: "-80px", // 왼쪽으로 80px 이동 (더 왼쪽으로 가려면 숫자를 키우세요)
+  contentGrid: {
+    display: "flex",
+    gap: "60px",
+    alignItems: "flex-start",
+    flexWrap: "wrap",
   },
-  polaroidCustom: {
-    padding: "20px 20px 20px 30px",
+
+  // 왼쪽 프로필 스타일
+  profileColumn: { flex: "1", minWidth: "300px" },
+  profileCard: {
     backgroundColor: "#fff",
-    boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
-    borderRadius: "15px",
-    border: "none",
+    borderRadius: "32px",
+    padding: "24px",
+    border: "1px solid #f1f5f9",
+    boxShadow: "0 30px 60px -12px rgba(0,0,0,0.08)",
   },
-  profileImg: {
+  imageWrapper: {
     width: "100%",
-    height: "auto",
-    borderRadius: "8px",
-    marginBottom: "20px",
-    // transform: "translateX(40px)" 를 삭제했습니다. (이미지 잘림 해결)
-  },
-  iconContainer: {
-    display: "flex",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    padding: "10px 0",
-  },
-  techIcon: { fontSize: "3rem" },
-
-  // 카드 영역 (너비를 넓게 유지하며 왼쪽으로 당기기)
-  aboutCard: {
-    borderRadius: "16px",
-    border: "none",
-    boxShadow: "0 20px 50px rgba(0,0,0,0.06)",
+    borderRadius: "20px",
     overflow: "hidden",
-    width: "110%", // 너비를 부모보다 10% 더 넓게 설정 가능
-    position: "relative",
-    left: "-50px", // 프로필 카드를 따라 왼쪽으로 50px 이동
+    marginBottom: "24px",
   },
+  profileImg: { width: "100%", height: "auto", display: "block" },
+  techStack: { textAlign: "center", paddingTop: "10px" },
+  techLabel: {
+    fontSize: "0.75rem",
+    fontWeight: 800,
+    color: "#94a3b8",
+    textTransform: "uppercase",
+    letterSpacing: "0.1em",
+    marginBottom: "16px",
+  },
+  iconRow: { display: "flex", justifyContent: "center", gap: "20px" },
+  techIcon: { fontSize: "2.5rem" },
 
-  // ... (나머지 cardHeader, cardBody, 텍스트 스타일은 동일)
-  cardHeader: {
-    backgroundColor: "#f5f5f5",
-    borderBottom: "none",
-    padding: "12px 20px",
+  // 오른쪽 정보 카드 스타일
+  detailsColumn: { flex: "2.5", minWidth: "450px" },
+  infoCard: {
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    backdropFilter: "blur(10px)",
+    borderRadius: "32px",
+    border: "1px solid #f1f5f9",
+    padding: "60px",
+  },
+  helloText: {
+    fontSize: "3.5rem",
+    fontWeight: 900,
+    color: "#0f172a",
+    marginBottom: "30px",
+    letterSpacing: "-0.04em",
+  },
+  accentDot: { color: "#8e70ff" },
+  summaryText: {
+    fontSize: "1.25rem",
+    color: "#475569",
+    lineHeight: "1.7",
+    marginBottom: "40px",
+  },
+  divider: { height: "1px", backgroundColor: "#f1f5f9", margin: "40px 0" },
+
+  infoSection: { marginBottom: "50px" },
+  sectionCaption: {
+    fontSize: "0.85rem",
+    fontWeight: 800,
+    color: "#8e70ff",
+    textTransform: "uppercase",
+    letterSpacing: "0.1em",
+    marginBottom: "20px",
     display: "flex",
+    alignItems: "center",
     gap: "10px",
   },
-  dot: { fontSize: "14px" },
-  cardBody: { padding: "50px", color: "#333", lineHeight: "1.8" },
-
-  helloText: {
-    fontWeight: "800",
-    marginBottom: "25px",
-    color: "#111",
-    fontSize: "3rem",
+  infoList: { listStyle: "none", padding: 0 },
+  infoItem: {
+    fontSize: "1.15rem",
+    color: "#1e293b",
+    marginBottom: "16px",
+    paddingLeft: "24px",
+    position: "relative",
+    lineHeight: "1.6",
   },
-  summaryText: {
-    fontSize: "1.8rem",
-    marginBottom: "30px",
-    color: "#444",
-    fontWeight: "400",
+  // 프로젝트 섹션과 통일된 불렛 포인트
+  infoItemBefore: {
+    // CSS 파일이 있다면 추가 권장, 인라인으로는 ✦ 사용
+    content: "'✦'",
+    position: "absolute",
+    left: 0,
+    color: "#8e70ff",
   },
-  divider: { height: "2px", backgroundColor: "#eee", margin: "40px 0" },
-
-  infoSection: { marginBottom: "40px" },
-  infoTitle: {
-    fontSize: "2rem",
-    fontWeight: "700",
-    color: "#222",
-    marginBottom: "20px",
-    borderLeft: "6px solid #ae944f",
-    paddingLeft: "15px",
-  },
-  infoList: { paddingLeft: "25px", fontSize: "2.2rem" },
-  infoItem: { marginBottom: "12px", fontSize: "1.8rem", color: "#444" },
 
   conclusionBox: {
-    marginTop: "50px",
-    padding: "30px",
-    backgroundColor: "#f8f9fa",
-    borderLeft: "4px solid #ddd",
-    borderRadius: "4px",
-    fontStyle: "italic",
-    fontSize: "1.6rem",
-    color: "#555",
+    marginTop: "60px",
+    padding: "40px",
+    backgroundColor: "#f8fafc",
+    borderRadius: "24px",
+    position: "relative",
+    fontSize: "1.2rem",
+    color: "#475569",
+    lineHeight: "1.8",
+    fontWeight: "500",
+  },
+  quoteIcon: {
+    position: "absolute",
+    top: "-10px",
+    left: "20px",
+    fontSize: "4rem",
+    color: "#e2e8f0",
+    fontFamily: "serif",
   },
 };
 
