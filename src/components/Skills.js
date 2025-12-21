@@ -33,7 +33,6 @@ class Skills extends Component {
     return (
       <section id="skills" style={styles.section}>
         <div style={styles.container}>
-          {/* 일관성 있는 헤더 레이아웃 */}
           <div style={styles.headerArea}>
             <span style={styles.subTitle}>Expertise</span>
             <h1 style={styles.mainTitle}>{sectionName}</h1>
@@ -51,10 +50,11 @@ class Skills extends Component {
 const styles = {
   section: {
     padding: "140px 0",
-    backgroundColor: "#ffffff",
-    backgroundImage: "radial-gradient(#e5e7eb 1px, transparent 1px)", // 다른 섹션과 통일된 도트 패턴
+    backgroundColor: "var(--bg-color)",
+    backgroundImage: "radial-gradient(var(--bg-dot) 1px, transparent 1px)",
     backgroundSize: "40px 40px",
     minHeight: "60vh",
+    transition: "all 0.3s ease",
   },
   container: {
     maxWidth: "1100px",
@@ -66,7 +66,7 @@ const styles = {
     marginBottom: "80px",
   },
   subTitle: {
-    color: "#8e70ff",
+    color: "var(--accent-color)",
     fontWeight: 800,
     fontSize: "0.9rem",
     textTransform: "uppercase",
@@ -75,7 +75,7 @@ const styles = {
   mainTitle: {
     fontSize: "4rem",
     fontWeight: 900,
-    color: "#0f172a",
+    color: "var(--text-main)",
     margin: "10px 0",
     letterSpacing: "-0.04em",
   },
@@ -88,7 +88,7 @@ const styles = {
 
   skillList: {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", // 반응형 그리드
+    gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
     gap: "24px",
     width: "100%",
     listStyle: "none",
@@ -97,13 +97,13 @@ const styles = {
   },
 
   skillItem: {
-    perspective: "1000px", // 3D 효과를 위한 설정
+    perspective: "1000px",
   },
 
   skillCard: {
-    backgroundColor: "rgba(255, 255, 255, 0.8)",
-    backdropFilter: "blur(8px)",
-    border: "1px solid #f1f5f9",
+    backgroundColor: "var(--card-bg)",
+    backdropFilter: "blur(12px)",
+    border: "1px solid var(--card-border)",
     borderRadius: "24px",
     padding: "32px 20px",
     textAlign: "center",
@@ -112,36 +112,34 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     gap: "16px",
-    cursor: "default",
-    boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.05)",
-    // 호버 효과를 CSS 파일 없이 구현하려면 onMouseEnter/Leave가 필요하지만,
-    // 인라인 구조상 기본 상태만 정의합니다.
+    boxShadow: "0 10px 30px -10px rgba(0,0,0,0.1)",
   },
 
   iconWrapper: {
-    width: "64px",
-    height: "64px",
+    width: "72px",
+    height: "72px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#f8fafc",
-    borderRadius: "16px",
+    backgroundColor: "var(--bg-color)",
+    borderRadius: "20px",
     marginBottom: "4px",
+    border: "1px solid var(--card-border)",
     transition: "transform 0.3s ease",
   },
 
   skillIcon: {
     fontSize: "40px",
-    // Devicon이나 Iconify 색상을 유지하기 위해 별도 색상 지정 안함
+    color: "var(--text-main)",
+    filter: "drop-shadow(0 0 2px rgba(255,255,255,0.1))",
   },
 
   skillName: {
-    fontSize: "1rem",
+    fontSize: "1.1rem",
     fontWeight: "700",
-    color: "#1e293b",
+    color: "var(--text-main)",
     margin: 0,
     letterSpacing: "-0.01em",
   },
 };
-
 export default Skills;
