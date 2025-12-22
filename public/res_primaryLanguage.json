@@ -41,7 +41,11 @@
       "title": "졸업 프로젝트 - 사진작가 & 고객 매칭 플랫폼",
       "startDate": "2024",
       "description": "**Team Project | Frontend (React Native)**\n\n사진작가와 고객을 연결하는 모바일 기반 매칭 서비스\n촬영 스타일 필터, 예약 시스템, 리뷰·커뮤니티 기능을 포함한\n실사용 수준의 MVP를 목표로 개발했습니다.\n\n### What I built\n- React Native 기반 모바일 UI 전반 구현\n- 작가 탐색 · 포트폴리오 · 예약 · 커뮤니티 화면 개발\n- JWT 기반 인증 흐름을 고려한 프론트엔드 상태 관리\n\n### Key features\n- 카테고리 기반 작가 검색 및 상세 포트폴리오 조회\n- 고객 → 작가 예약 요청 / 작가 → 수락·거절 플로우\n- 리뷰 및 댓글이 가능한 커뮤니티 게시판\n\n### Technical focus\n- 모바일 API 지연을 고려한 로딩·에러 UX 처리\n- FlatList lazy rendering + 서버 페이지네이션 적용\n- Git Flow 기반 협업 (PR · 코드 리뷰 경험)\n\n### Takeaway\n- 모바일 환경에서 UX와 성능이 직결된다는 점을 체감\n- 기능 구현보다 사용자 흐름을 먼저 설계하는 습관 형성\n- 팀 프로젝트에서 역할 분리와 커뮤니케이션의 중요성 학습",
-      "images": ["/images/portfolio/grad/졸프홈.png"],
+      "images": [
+        "/images/portfolio/grad/졸프홈.png",
+        "/images/portfolio/grad/졸프.png",
+        "/images/portfolio/grad/졸프1.png"
+      ],
       "url": "https://github.com/DUChae/Chalkak",
       "technologies": [
         { "class": "devicon-react-original", "name": "React Native" },
