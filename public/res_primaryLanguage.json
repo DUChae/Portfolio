@@ -59,7 +59,12 @@
       "title": "노벨상 수상자 정보 웹사이트 (TypeScript 리팩터링)",
       "startDate": "2024",
       "description": "**Personal Project | Frontend (React · TypeScript)**\n\n노벨상 수상 데이터를 기반으로 연도·분야·수상자 별 탐색이 가능하고, 시각적으로 이해하기 쉬운 정보 제공을 목표로 만든 웹 서비스입니다.\n단순한 데이터 출력이 아니라, “사용자가 데이터를 탐색하며 패턴을 발견할 수 있는 경험”에 집중했습니다.\n\n### What I built\n- React + TypeScript 기반 웹 애플리케이션 설계 및 구현\n- API 데이터 파싱, 상태 관리, UI 구조 설계 전반\n- 유지보수성과 가독성을 고려한 전면 리팩토링 진행 (JavaScript → TypeScript)\n\n### Key Features\n- 분야별 / 연도별 노벨상 수상자 탐색 기능\n- 검색 및 필터링을 통한 사용자 친화적 데이터 탐색\n- 직관적인 카드 UI와 구조화된 정보 제공\n\n### Technical Focus\n- TypeScript 리팩토링을 통한 타입 안정성 확보 및 런타임 오류 감소\n- 컴포넌트 책임 분리와 UI 재사용성 개선\n- API 의존 서비스에서 발생 가능한 예외 상황(네트워크 실패, 빈 데이터 등) 대응\n\n### Takeaway\n- JavaScript 기반 코드에서 TypeScript로 마이그레이션하는 실전 경험 축적\n- “보기 좋은 UI”보다 **“이해하기 쉬운 데이터 경험”**을 우선하는 설계 감각 강화\n- 작은 프로젝트라도 구조적으로 설계하면 훨씬 오래 사용할 수 있다는 점 체감",
-      "images": ["/images/portfolio/nobel/노벨.png"],
+      "images": [
+        "/images/portfolio/nobel/노벨.png",
+        "/images/portfolio/nobel/검색결과.png",
+        "/images/portfolio/nobel/카테고리.png",
+        "/images/portfolio/nobel/카테고리별_수상자.png"
+      ],
       "url": "https://github.com/DUChae/Nobel-prize",
       "live": "https://nobel-prize-sooty.vercel.app",
       "technologies": [
