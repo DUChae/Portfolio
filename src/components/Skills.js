@@ -135,7 +135,7 @@ const styles = {
   },
 
   skillName: {
-    fontSize: "1.1rem",
+    fontSize: "1.5rem",
     fontWeight: "700",
     color: "var(--text-main)",
     margin: 0,
