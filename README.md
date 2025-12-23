@@ -7,7 +7,7 @@
   
   ### "A developer who builds end-to-end services with data-driven decisions."
   
-  [🌐 Live Website](https://your-portfolio-link.vercel.app) | [📧 Contact Me](sangdyjjang@naver.com) |
+  [🌐 Live Website](https://your-portfolio-link.vercel.app) | [📧 Contact Me](sangdyjjang@naver.com) 
 </div>
 
 ---
