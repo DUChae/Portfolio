@@ -190,7 +190,7 @@ class Projects extends Component {
                         <a
                           href={project.url}
                           target="_blank"
-                          rel="noreferrer"
+                          rel="noopener noreferrer"
                           style={styles.primaryBtn}
                         >
                           View Repository
@@ -199,7 +199,7 @@ class Projects extends Component {
                           <a
                             href={project.live}
                             target="_blank"
-                            rel="noreferrer"
+                            rel="noopener noreferrer"
                             style={styles.secondaryBtn}
                           >
                             Live Demo
