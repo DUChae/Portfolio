@@ -10,13 +10,8 @@
     "social": [
       {
         "name": "github",
-        "url": "https://github.com",
+        "url": "https://github.com/DUChae",
         "class": "fab fa-github"
-      },
-      {
-        "name": "instagram",
-        "url": "https://www.instagram.com",
-        "class": "fab fa-instagram"
       }
     ],
     "image": "portfolio/photo/ID_Photo.jpg"
