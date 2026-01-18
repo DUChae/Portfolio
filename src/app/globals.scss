@@ -1,0 +1,190 @@
+/* src/app/globals.scss */
+
+/* // 1. Tailwind 기본 레이어 (순서 중요! 항상 맨 위) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* // 2. 테마 변수 정의 (next-themes와 함께 사용) */
+:root {
+  --bg-color: #ffffff;
+  --bg-dot: #e5e7eb;
+  --text-main: #0f172a;
+  --text-sub: #475569;
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: #f1f5f9;
+  --accent-color: #8e70ff;
+  --timeline-line: #f1f5f9;
+  --header-bg: #ffffff;
+  --icon-color: #475569;
+}
+
+[data-theme="dark"] {
+  --bg-color: #0f172a; /* 심해 네이비 */
+  --bg-dot: #1e293b; /* 다크모드 도트 */
+  --text-main: #f8fafc; /* 화이트 계열 */
+  --text-sub: #94a3b8; /* 연한 그레이 */
+  --card-bg: rgba(30, 41, 59, 0.7);
+  --card-border: #334155;
+  --accent-color: #a78bff; /* 밝은 보라 */
+  --timeline-line: #1e293b;
+  --header-bg: #0f172a;
+  --icon-color: #f8fafc;
+}
+
+/* // 3. 전역 기본 스타일 (Tailwind가 커버하지 않는 부분) */
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* // 4. 애니메이션 정의 (기존 그대로 유지) */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* // 5. 공통 유틸리티 클래스 (Tailwind와 충돌 안 나게) */
+.aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* // 6. 섹션 타이틀 공통 스타일 */
+.section-title {
+  padding: 80px 0;
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* // 7. React Vertical Timeline 다크모드 호환 */
+.vertical-timeline::before {
+  background: var(--timeline-line) !important;
+}
+
+.vertical-timeline-element-content {
+  background: var(--card-bg) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--card-border) !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05) !important;
+  backdrop-filter: blur(10px);
+}
+
+.vertical-timeline-element-content-arrow {
+  border-right: 7px solid var(--card-border) !important;
+}
+
+/* // 8. 프로젝트 아코디언/아이템 다크모드 대응 */
+.project-accordion-item {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+}
+
+.project-title {
+  color: var(--text-main) !important;
+}
+
+/* // 9. react-switch 커스텀 스타일 */
+.react-switch {
+  vertical-align: middle;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* // 10. slick-carousel (슬라이더) 다크/라이트 통합 */
+.slick-prev:before,
+.slick-next:before {
+  color: var(--accent-color) !important;
+}
+
+[data-theme="dark"] .slick-slider {
+  .slick-dots li button:before {
+    color: var(--text-sub);
+    opacity: 0.5;
+  }
+}
+
+[data-theme="light"] .slick-slider {
+  .slick-dots li button:before {
+    color: var(--text-sub);
+    opacity: 0.75;
+  }
+}
+
+/* // 11. 로딩 스피너 */
+.loading-spinner-style {
+  animation: spin 1s linear infinite;
+}
+
+/* // 12. Typical 커서 숨김 (Typical 제거했으면 필요 없지만 안전하게) */
+.styles_typicalWrapper__1_Uvh::after {
+  display: none !important;
+}
+
+//* globals.scss 끝부분에 추가 */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--typing-width);
+  }
+}
+
+@keyframes blinkCursor {
+  from,
+  to {
+    border-right-color: transparent;
+  }
+  50% {
+    border-right-color: var(--accent-color);
+  }
+}
+
+.typing-animation {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid var(--accent-color);
+
+  /* infinite 제거 */
+  animation: typing var(--typing-duration) steps(var(--typing-steps)) forwards,
+    blinkCursor 0.75s step-end infinite;
+}
