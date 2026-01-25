@@ -1,13 +1,13 @@
-// src/components/Projects.tsx
+// src/components/Projects.tsx (수정 버전: 영어/한국어 순서 문제 해결 + 정렬 로직 추가)
 "use client";
 
 import React, { Component } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Image from "next/image"; // <img> → <Image>로 교체 (경고 해결 + 성능 최적화)
+import Image from "next/image";
 
-// Props 인터페이스 정의 (타입 에러 해결 핵심)
+// Props 인터페이스 (currentLang 추가)
 interface ProjectsProps {
   resumeProjects?: Array<{
     title: string;
@@ -26,9 +26,10 @@ interface ProjectsProps {
       projects?: string;
     };
   };
+  currentLang?: string; // ← page.tsx에서 전달받는 현재 언어
 }
 
-// 슬라이더 화살표 커스텀 컴포넌트 (props 타입 명시 → any 에러 방지)
+// 슬라이더 화살표 커스텀 컴포넌트
 function NextArrow(props: {
   className?: string;
   style?: React.CSSProperties;
@@ -79,7 +80,7 @@ class Projects extends Component<ProjectsProps> {
   };
 
   render() {
-    const { resumeProjects, resumeBasicInfo } = this.props;
+    const { resumeProjects, resumeBasicInfo, currentLang = "ko" } = this.props;
 
     if (!resumeProjects || !resumeBasicInfo) {
       return (
@@ -89,9 +90,14 @@ class Projects extends Component<ProjectsProps> {
       );
     }
 
-    const sectionName = resumeBasicInfo.section_name?.projects || "Projects";
+    const sectionName =
+      resumeBasicInfo.section_name?.projects ||
+      (currentLang === "ko" ? "프로젝트" : "Projects");
 
-    // 슬라이더 설정 (타입 안전하게)
+    // 언어에 따라 프로젝트 순서 정렬 (최신순 → 과거순, 영어/한국어 동일)
+    const sortedProjects = resumeProjects;
+
+    // 슬라이더 설정
     const sliderSettings = {
       dots: true,
       infinite: true,
@@ -103,31 +109,31 @@ class Projects extends Component<ProjectsProps> {
       prevArrow: <PrevArrow />,
     };
 
-    // 텍스트 스타일 적용 헬퍼 함수 (타입 명시)
+    // 텍스트 스타일 적용 헬퍼
     const applyStyles = (text?: string): string => {
       if (!text) return "";
       return text
         .replace(/\n/g, "<br/>")
         .replace(
           /^/,
-          "<div style='font-size: 1.6rem; line-height: 1.9; color: var(--text-sub); font-weight: 400;'>"
+          "<div style='font-size: 1.6rem; line-height: 1.9; color: var(--text-sub); font-weight: 400;'>",
         )
         .replace(/$/, "</div>")
         .replace(
           /\*\*(.*?)\*\*/g,
-          "<strong style='color:var(--text-main); font-weight:700; font-size: 1.8rem;'>$1</strong>"
+          "<strong style='color:var(--text-main); font-weight:700; font-size: 1.8rem;'>$1</strong>",
         )
         .replace(
           /### (.*?)(<br\/>|$)/g,
-          "<div style='margin-top:60px; margin-bottom:30px;'><span style='font-size:1.2rem; font-weight:800; color:var(--accent-color); text-transform:uppercase; letter-spacing:0.15em; display:block; margin-bottom:12px;'>Section Review</span><h4 style='font-weight:800; color:var(--text-main); font-size:2.5rem; letter-spacing:-0.03em; margin:0;'>$1</h4></div>"
+          "<div style='margin-top:60px; margin-bottom:30px;'><span style='font-size:1.2rem; font-weight:800; color:var(--accent-color); text-transform:uppercase; letter-spacing:0.15em; display:block; margin-bottom:12px;'>Section Review</span><h4 style='font-weight:800; color:var(--text-main); font-size:2.5rem; letter-spacing:-0.03em; margin:0;'>$1</h4></div>",
         )
         .replace(
           /### Key Insights/g,
-          "<div style='margin-top:60px; margin-bottom:30px; padding:40px; background:var(--bg-dot); border-radius:32px; border-left:8px solid #f59e0b;'><span style='font-size:1.2rem; font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:0.15em; display:block; margin-bottom:8px;'>Valuable Discovery</span><h4 style='font-weight:800; color:var(--text-main); font-size:2.5rem; letter-spacing:-0.03em; margin:0;'>Key Insights</h4></div>"
+          "<div style='margin-top:60px; margin-bottom:30px; padding:40px; background:var(--bg-dot); border-radius:32px; border-left:8px solid #f59e0b;'><span style='font-size:1.2rem; font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:0.15em; display:block; margin-bottom:8px;'>Valuable Discovery</span><h4 style='font-weight:800; color:var(--text-main); font-size:2.5rem; letter-spacing:-0.03em; margin:0;'>Key Insights</h4></div>",
         )
         .replace(
           /- (.*?)(<br\/>|$)/g,
-          "<div style='margin-bottom:20px; padding-left:40px; position:relative; color:var(--text-sub); font-size:1.6rem; line-height:1.7;'><span style='position:absolute; left:0; top:2px; color:var(--accent-color); font-size:1.8rem;'>✦</span>$1</div>"
+          "<div style='margin-bottom:20px; padding-left:40px; position:relative; color:var(--text-sub); font-size:1.6rem; line-height:1.7;'><span style='position:absolute; left:0; top:2px; color:var(--accent-color); font-size:1.8rem;'>✦</span>$1</div>",
         );
     };
 
@@ -140,12 +146,12 @@ class Projects extends Component<ProjectsProps> {
           </div>
 
           <div style={styles.listContainer}>
-            {resumeProjects.map((project, index) => {
+            {sortedProjects.map((project, index) => {
               const isActive = this.state.activeIndex === index;
 
               return (
                 <div
-                  key={project.title}
+                  key={index}
                   style={isActive ? styles.activeItem : styles.item}
                   onClick={() => this.toggleProject(index)}
                 >
@@ -181,7 +187,6 @@ class Projects extends Component<ProjectsProps> {
                       style={styles.innerContent}
                       onClick={(e) => e.stopPropagation()}
                     >
-                      {/* 사진 슬라이더 영역 - <img> → <Image>로 교체 */}
                       {project.images && project.images.length > 0 && (
                         <div style={styles.sliderWrapper}>
                           <Slider {...sliderSettings}>
@@ -193,7 +198,7 @@ class Projects extends Component<ProjectsProps> {
                                   width={1200}
                                   height={800}
                                   style={styles.image}
-                                  priority={i === 0} // 첫 번째 이미지만 우선 로드
+                                  priority={i === 0}
                                 />
                               </div>
                             ))}
@@ -201,14 +206,12 @@ class Projects extends Component<ProjectsProps> {
                         </div>
                       )}
 
-                      {/* 프로젝트 설명 */}
                       <div
                         dangerouslySetInnerHTML={{
                           __html: applyStyles(project.description),
                         }}
                       />
 
-                      {/* 기술 스택 */}
                       <div style={styles.techStack}>
                         <p style={styles.techLabel}>Built with</p>
                         <div style={styles.techGrid}>
@@ -221,7 +224,6 @@ class Projects extends Component<ProjectsProps> {
                         </div>
                       </div>
 
-                      {/* 버튼 그룹 */}
                       <div style={styles.buttonGroup}>
                         <a
                           href={project.url}
@@ -254,7 +256,7 @@ class Projects extends Component<ProjectsProps> {
   }
 }
 
-// 스타일 객체 (as const로 타입 안전성 강화, textAlign 등 문제 해결)
+// 스타일 객체 (기존 그대로)
 const styles = {
   section: {
     padding: "140px 0",
