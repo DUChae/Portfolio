@@ -161,7 +161,7 @@ export default function Home() {
           console.error(`Resume data 로드 실패 (${path}):`, err),
       });
     },
-    [isSharedLoaded]
+    [isSharedLoaded],
   );
 
   useEffect(() => {
@@ -225,6 +225,7 @@ export default function Home() {
                 projects: resumeData.section_name?.projects ?? "Projects",
               },
             }}
+            currentLang={currentLang}
           />
           <Skills
             sharedSkills={sharedData.skills?.icons ?? []}
