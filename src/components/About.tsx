@@ -154,7 +154,7 @@ const applyStyles = (text?: string): string => {
     .replace(/\n/g, "<br/>")
     .replace(
       /\*\*(.*?)\*\*/g,
-      "<strong style='color:var(--text-main); font-weight:700;'>$1</strong>"
+      "<strong style='color:var(--text-main); font-weight:700;'>$1</strong>",
     );
 };
 
@@ -241,7 +241,8 @@ class About extends Component<AboutProps> {
                       0{index + 1} / {section.title}
                     </div>
                     <ul style={styles.infoList}>
-                      {section.details.map((detail, i) => (
+                      {/* section.details가 없을 경우를 대비해 빈 배열([])로 폴백 처리 */}
+                      {(section.details || []).map((detail, i) => (
                         <li key={i} style={styles.infoItem}>
                           <span
                             dangerouslySetInnerHTML={{
